@@ -43,11 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Department.cs" />
+    <Compile Include="Data\Position.cs" />
+    <Compile Include="Data\TimeRecord.cs" />
+    <Compile Include="Data\TypeOfActivity.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserReport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoriesInterfaces\IReportRepository.cs" />
+    <Compile Include="RepositoriesInterfaces\ITimeRecordRepository.cs" />
+    <Compile Include="RepositoriesInterfaces\IUserReporitory.cs" />
+    <Compile Include="RepositoriesInterfaces\IRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="RepositoriesImplementation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
