@@ -29,10 +29,7 @@ namespace TimeTracker.RepositoriesImplementation
 
         public RepositoryJsonFile(string filePath)
         {
-
             FilePath = filePath;
-            //File = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
-
             //TODO - add handling of not valid path, etc.
         }
         public TEntity Get(int id)
@@ -45,8 +42,6 @@ namespace TimeTracker.RepositoriesImplementation
         {
             string line;
             var records = new List<TEntity>();
-
-            JsonSerializer serializer = new JsonSerializer();
             var fileReader = OpenReader();
 
             using (fileReader)
@@ -56,23 +51,19 @@ namespace TimeTracker.RepositoriesImplementation
                     records.Add(JsonConvert.DeserializeObject<TEntity>(line));
                 }
             }
-            
             return records;
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            throw new NotImplementedException();
+            var records = GetAll();
+            var filteredRecords = records.Where(predicate.Compile());
+            return filteredRecords;
         }
 
         public void Add(TEntity entity)
         {
-            //IEnumerable<TEntity> records = GetAll();
-
-            //records.Append(entity);
-            
             string json = JsonConvert.SerializeObject(entity);
-
             var fileWriter = OpenWriter();
 
             using (fileWriter)
@@ -84,7 +75,21 @@ namespace TimeTracker.RepositoriesImplementation
 
         public void Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            string tempFile = Path.GetTempFileName();
+            string line;
+            string json = JsonConvert.SerializeObject(entity);
+
+            using (var fileReader = OpenReader())
+            using (var tempFileWriter = new StreamWriter(tempFile))
+            {
+                while ((line = fileReader.ReadLine()) != null)
+                {
+                    if (line != json)
+                        tempFileWriter.WriteLine(line);
+                }
+            }
+            File.Delete(FilePath);
+            File.Move(tempFile, FilePath);
         }
     }
 }

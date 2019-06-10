@@ -35,8 +35,9 @@ namespace TimeTracker
             userRepo.Add(user2);
             Console.WriteLine(userRepo.Get(0));
             //Console.WriteLine(userRepo.GetAll());
-
-
+            userRepo.Add(user3);
+            var usersCount = userRepo.Find(u => u.Name == "Will").Count();
+            Console.WriteLine(usersCount);
         }
     }
 }
