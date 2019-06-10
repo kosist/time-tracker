@@ -33,8 +33,8 @@ namespace TimeTracker
             RepositoryJsonFile<User> userRepo = new RepositoryJsonFile<User>("testFile.json");
             userRepo.Add(user1);
             userRepo.Add(user2);
-            //Console.WriteLine(userRepo.Get(0).Name);
-            Console.WriteLine(userRepo.GetAll());
+            Console.WriteLine(userRepo.Get(0));
+            //Console.WriteLine(userRepo.GetAll());
 
 
         }

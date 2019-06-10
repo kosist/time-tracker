@@ -16,13 +16,13 @@ namespace TimeTracker.RepositoriesImplementation
 
         private StreamReader OpenReader()
         {
-            var file = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+            var file = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None);
             StreamReader fileReader = new StreamReader(file);
             return fileReader;
         }
         private StreamWriter OpenWriter()
         {
-            var file = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+            var file = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.None);
             StreamWriter fileWriter = new StreamWriter(file);
             return fileWriter;
         }
