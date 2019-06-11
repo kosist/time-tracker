@@ -51,5 +51,20 @@ namespace TimeTracker.Testing.FileRepositories
 
             return timeRecord;
         }
+        public static List<UserReport> GenerateUserWeeklyReportRecords(User user, DateTime startDay)
+        {
+            var userReports = new List<UserReport>();
+
+            for (int i = 0; i < 7; i++)
+            {
+                var userReport = new UserReport
+                {
+                    User = user,
+                    Date = startDay.AddDays(i)
+                };
+                userReports.Add(userReport);
+            }
+            return userReports;
+        }
     }
 }

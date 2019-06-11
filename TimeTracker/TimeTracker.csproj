@@ -54,15 +54,17 @@
     <Compile Include="Data\UserReport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoriesImplementation\UserReportRepositoryJsonFile.cs" />
     <Compile Include="RepositoriesImplementation\RepositoryJsonFile.cs" />
     <Compile Include="RepositoriesImplementation\TimeRecordRepositoryJsonFile.cs" />
     <Compile Include="RepositoriesImplementation\UserRepositoryJsonFile.cs" />
-    <Compile Include="RepositoriesInterfaces\IReportRepository.cs" />
+    <Compile Include="RepositoriesInterfaces\IUserReportRepository.cs" />
     <Compile Include="RepositoriesInterfaces\ITimeRecordRepository.cs" />
     <Compile Include="RepositoriesInterfaces\IUserReporitory.cs" />
     <Compile Include="RepositoriesInterfaces\IRepository.cs" />
     <Compile Include="Testing\FileRepositories\SupportRepositoryJsonFileTesting.cs" />
     <Compile Include="Testing\FileRepositories\TestTimeRecordRepositoryJsonFile.cs" />
+    <Compile Include="Testing\FileRepositories\TestUserReportRepositoryJsonFile.cs" />
     <Compile Include="Testing\FileRepositories\TestUserRepositoryJsonFile.cs" />
   </ItemGroup>
   <ItemGroup>

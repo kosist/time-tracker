@@ -54,15 +54,22 @@ namespace TimeTracker
             var usersCount = generalUserRepo.Find(u => u.Name == "Will").Count();
             Console.WriteLine(usersCount);
 
-            // testing user repositories
+            // testing user repository
             TestUserRepositoryJsonFile userRepoTester = new TestUserRepositoryJsonFile("usersRepo.json");
             userRepoTester.TestAddAndGetUsers();
             userRepoTester.TestGetUsersByDepartment();
 
-            // testing time records repositories
+            // testing time records repository
             TestTimeRecordRepositoryJsonFile timeRecordRepoTester = new TestTimeRecordRepositoryJsonFile("timeRecordsRepo.json");
             timeRecordRepoTester.TestAddAndGetTimeRecords();
             timeRecordRepoTester.TestGetUsersDailyRecords(DateTime.Now);
+
+            // testing user reports repository
+            TestUserReportRepositoryJsonFile userReportRepoTester = new TestUserReportRepositoryJsonFile("userReports.json");
+            userReportRepoTester.TestAddAndGetUserReport();
+            userReportRepoTester.TestGetWeeklyUserReport();
+            userReportRepoTester.TestGetMonthlyUserReport();
+            userReportRepoTester.TestGetYearlyUserReport();
 
         }
     }

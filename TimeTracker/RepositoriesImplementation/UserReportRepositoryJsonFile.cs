@@ -14,11 +14,12 @@ namespace TimeTracker.RepositoriesImplementation
         {
         }
 
-        public IEnumerable<UserReport> GetMonthlyReports(User user, int monthNumber)
+        public IEnumerable<UserReport> GetMonthlyReports(User user, DateTime month)
         {
             var report = GetAll().Where(r => r.User.Name == user.Name
                                              && r.User.Surname == user.Surname
-                                             && r.Date.Month == monthNumber);
+                                             && r.Date.Year == month.Year
+                                             && r.Date.Month == month.Month).ToList();
             return report;
         }
 
@@ -26,8 +27,9 @@ namespace TimeTracker.RepositoriesImplementation
         {
             var report = GetAll().Where(r => r.User.Name == user.Name
                                              && r.User.Surname == user.Surname
+                                             && r.Date.Year == weekStartDate.Year
                                              && r.Date.DayOfYear >= weekStartDate.DayOfYear
-                                             && r.Date.DayOfYear <= weekStartDate.DayOfYear + 7);
+                                             && r.Date.DayOfYear <= weekStartDate.DayOfYear + 7).ToList();
             return report;
         }
 
@@ -35,7 +37,7 @@ namespace TimeTracker.RepositoriesImplementation
         {
             var report = GetAll().Where(r => r.User.Name == user.Name
                                              && r.User.Surname == user.Surname
-                                             && r.Date.Year == year.Year);
+                                             && r.Date.Year == year.Year).ToList();
             return report;
         }
     }
