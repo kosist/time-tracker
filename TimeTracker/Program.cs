@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TimeTracker.Data;
 using TimeTracker.RepositoriesImplementation;
+using TimeTracker.Testing.FileRepositories;
 
 namespace TimeTracker
 {
     class Program
     {
+        private 
+
         static void Main(string[] args)
         {
 
@@ -52,12 +55,9 @@ namespace TimeTracker
             Console.WriteLine(usersCount);
 
             // testing user repositories
-            UserRepositoryJsonFile userRepo = new UserRepositoryJsonFile("testFile.json");
-            var usersOfDep = userRepo.GetUsersOfDepartment(depMech);
-            foreach (var user in usersOfDep)
-            {
-                Console.WriteLine("User " + user.Name + " " + user.Surname + " works at " + user.Department.Name + " department");
-            }
+            TestUserRepositoryJsonFile userRepoTester = new TestUserRepositoryJsonFile("usersRepo.json");
+            userRepoTester.TestAddAndGetUsers();
+            userRepoTester.TestGetUsersByDepartment();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TimeTracker.Data
         public string Surname { get; set; }
         public Department Department { get; set; }
         public Position Position { get; set; }
-        public int NumberOfWorkingDays { get; set; }
+        public int NumberOfWorkingDaysPerWeek { get; set; }
         public float NumberOfDailyWorkHours { get; set; }
         public int BreakDurationInMinutes { get; set; }
 
