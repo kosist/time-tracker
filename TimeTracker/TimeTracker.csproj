@@ -62,6 +62,7 @@
     <Compile Include="RepositoriesInterfaces\IUserReporitory.cs" />
     <Compile Include="RepositoriesInterfaces\IRepository.cs" />
     <Compile Include="Testing\FileRepositories\SupportRepositoryJsonFileTesting.cs" />
+    <Compile Include="Testing\FileRepositories\TestTimeRecordRepositoryJsonFile.cs" />
     <Compile Include="Testing\FileRepositories\TestUserRepositoryJsonFile.cs" />
   </ItemGroup>
   <ItemGroup>

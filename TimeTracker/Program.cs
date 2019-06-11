@@ -58,6 +58,12 @@ namespace TimeTracker
             TestUserRepositoryJsonFile userRepoTester = new TestUserRepositoryJsonFile("usersRepo.json");
             userRepoTester.TestAddAndGetUsers();
             userRepoTester.TestGetUsersByDepartment();
+
+            // testing time records repositories
+            TestTimeRecordRepositoryJsonFile timeRecordRepoTester = new TestTimeRecordRepositoryJsonFile("timeRecordsRepo.json");
+            timeRecordRepoTester.TestAddAndGetTimeRecords();
+            timeRecordRepoTester.TestGetUsersDailyRecords(DateTime.Now);
+
         }
     }
 }

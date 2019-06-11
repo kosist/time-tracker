@@ -39,5 +39,17 @@ namespace TimeTracker.Testing.FileRepositories
             };
             return user;
         }
+
+        public static TimeRecord GenerateStartWorkingTimeRecord(User user, int daysShiftFromToday)
+        {
+            var timeRecord = new TimeRecord
+            {
+                User = user,
+                RecordTime = DateTime.Today.AddDays(daysShiftFromToday),
+                TypeOfActivity = new TypeOfActivity {Name = "Start Work"}
+            };
+
+            return timeRecord;
+        }
     }
 }

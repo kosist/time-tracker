@@ -32,6 +32,8 @@ namespace TimeTracker.Testing.FileRepositories
             UserRepo.Add(UserA);
             UserRepo.Add(UserB);
             var users = UserRepo.GetAll();
+            Console.WriteLine("\n");
+            Console.WriteLine("Test add and get users");
             PrintUsersInfo(users);
         }
 
