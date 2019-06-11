@@ -7,7 +7,7 @@ using TimeTracker.Data;
 
 namespace TimeTracker.RepositoriesInterfaces
 {
-    interface IReportRepository : IRepository<UserReport>
+    interface IUserReportRepository : IRepository<UserReport>
     {
         IEnumerable<UserReport> GetMonthlyReports(User user, int monthNumber);
         IEnumerable<UserReport> GetWeeklyReports(User user, DateTime weekStartDate);
