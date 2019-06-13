@@ -59,9 +59,12 @@
     <Compile Include="Data\Base\ActivityType.cs" />
     <Compile Include="Data\Base\User.cs" />
     <Compile Include="Data\Base\UserReport.cs" />
+    <Compile Include="Data\DbEntities\ActivityTypeDb.cs" />
     <Compile Include="Data\DbEntities\DepartmentDb.cs" />
     <Compile Include="Data\DbEntities\PositionDb.cs" />
+    <Compile Include="Data\DbEntities\TimeRecordDb.cs" />
     <Compile Include="Data\DbEntities\UserDb.cs" />
+    <Compile Include="Data\DbEntities\UserReportDb.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoriesImplementation\Database\RepositoryDb.cs" />
