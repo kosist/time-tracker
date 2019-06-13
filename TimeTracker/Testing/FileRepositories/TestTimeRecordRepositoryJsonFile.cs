@@ -22,7 +22,7 @@ namespace TimeTracker.Testing.FileRepositories
         {
             foreach (var record in records)
             {
-                Console.WriteLine($"User info: {record.User.Name} {record.User.Surname}, record time {record.RecordTime}, type of activity {record.TypeOfActivity.Name}");
+                Console.WriteLine($"User info: {record.User.Name} {record.User.Surname}, record time {record.RecordTime}, type of activity {record.ActivityType.Name}");
             }
         }
 

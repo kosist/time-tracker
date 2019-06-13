@@ -46,7 +46,7 @@ namespace TimeTracker.Testing.FileRepositories
             {
                 User = user,
                 RecordTime = DateTime.Today.AddDays(daysShiftFromToday),
-                TypeOfActivity = new TypeOfActivity {Name = "Start Work"}
+                ActivityType = new ActivityType {Name = "Start Work"}
             };
 
             return timeRecord;

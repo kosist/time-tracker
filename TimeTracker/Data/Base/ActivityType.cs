@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TimeTracker.Data
 {
-    class TypeOfActivity
+    class ActivityType
     {
         public string Name { get; set; }
     }

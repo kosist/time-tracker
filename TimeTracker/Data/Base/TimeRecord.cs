@@ -10,7 +10,7 @@ namespace TimeTracker.Data
     {
         public User User { get; set; }
         public DateTime RecordTime { get; set; }
-        public TypeOfActivity TypeOfActivity { get; set; }
+        public ActivityType ActivityType { get; set; }
 
     }
 }
