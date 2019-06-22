@@ -14,7 +14,7 @@ namespace BaseLayer.IRepositories
         IEnumerable<User> GetUsersOfDepartment(Department department);
         User GetUserById(int userId);
         void InsertUser(User user);
-        void DeleteUser(int userId);
+        void DeleteUser(User user);
         void UpdateUser(User user);
     }
 }

@@ -15,7 +15,7 @@ namespace FileLayer
         }
 
         #region PublicHelperMethods
-        public TObj GetObject(int id)
+        public TObj GetObjectById(int id)
         {
             IEnumerable<TObj> records = GetAllObjects();
             return records.ElementAt(id);

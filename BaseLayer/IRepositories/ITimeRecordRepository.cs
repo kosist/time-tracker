@@ -13,7 +13,7 @@ namespace BaseLayer.IRepositories
         IEnumerable<TimeRecord> GetTimeRecords();
         TimeRecord GeTimeRecordById(int recordId);
         void InsertTimeRecord(TimeRecord record);
-        void DeleteTimeRecord(int recordId);
+        void DeleteTimeRecord(TimeRecord record);
         void UpdateTimeRecord(TimeRecord record);
         IEnumerable<TimeRecord> GetUserDailyRecords(User user, DateTime dateTime);
         void RemoveLastUserRecord(User user);

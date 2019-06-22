@@ -12,7 +12,7 @@ namespace BaseLayer.IRepositories
         IEnumerable<UserReport> GetUserReports();
         UserReport GetUserReportById(int reportId);
         void InsertUserReport(UserReport report);
-        void DeleteUserReport(int reportId);
+        void DeleteUserReport(UserReport report);
         void UpdateUserReport(UserReport report);
         IEnumerable<UserReport> GetMonthlyReports(User user, DateTime month);
         IEnumerable<UserReport> GetWeeklyReports(User user, DateTime weekStartDate);

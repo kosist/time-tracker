@@ -10,6 +10,7 @@ namespace TimeTracker.RepositoriesImplementation
 {
     class UserReportRepositoryJsonFile : RepositoryJsonFile<UserReport>, IUserReportRepository
     {
+
         public UserReportRepositoryJsonFile(string filePath) : base(filePath)
         {
         }
