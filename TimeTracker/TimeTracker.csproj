@@ -53,12 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Base\Department.cs" />
-    <Compile Include="Data\Base\Position.cs" />
-    <Compile Include="Data\Base\TimeRecord.cs" />
-    <Compile Include="Data\Base\ActivityType.cs" />
-    <Compile Include="Data\Base\User.cs" />
-    <Compile Include="Data\Base\UserReport.cs" />
+    <Compile Include="Data\FileEntities\Department.cs" />
+    <Compile Include="Data\FileEntities\Position.cs" />
+    <Compile Include="Data\FileEntities\TimeRecord.cs" />
+    <Compile Include="Data\FileEntities\ActivityType.cs" />
+    <Compile Include="Data\FileEntities\User.cs" />
+    <Compile Include="Data\FileEntities\UserReport.cs" />
     <Compile Include="Data\DbEntities\ActivityTypeDb.cs" />
     <Compile Include="Data\DbEntities\DepartmentDb.cs" />
     <Compile Include="Data\DbEntities\PositionDb.cs" />

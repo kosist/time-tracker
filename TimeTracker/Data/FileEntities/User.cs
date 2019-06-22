@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TimeTracker.Data.BaseEntities;
 
 namespace TimeTracker.Data
 {
-    class User
+    class User : UserBase
     {
-        public string Name { get; set; }
-        public string Surname { get; set; }
         public Department Department { get; set; }
         public Position Position { get; set; }
         public int NumberOfWorkingDaysPerWeek { get; set; }

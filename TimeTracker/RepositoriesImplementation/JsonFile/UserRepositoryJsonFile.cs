@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TimeTracker.Data;
+using TimeTracker.Data.BaseEntities;
 using TimeTracker.RepositoriesInterfaces;
 
 namespace TimeTracker.RepositoriesImplementation
 {
-    class UserRepositoryJsonFile : RepositoryJsonFile<User>, IUserReporitory
+    class UserRepositoryJsonFile : RepositoryJsonFile<UserBase>, IUserReporitory
     {
+        private IUserReporitory _userReporitoryImplementation;
+
         public UserRepositoryJsonFile(string filePath) : base(filePath)
         {
         }

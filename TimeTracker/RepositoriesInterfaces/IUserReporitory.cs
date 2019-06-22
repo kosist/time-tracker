@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 using TimeTracker.Data;
 
 namespace TimeTracker.RepositoriesInterfaces
 {
-    interface IUserReporitory : IRepository<User>
+    interface IUserReporitory : IRepository<TEntity>
     {
-        IEnumerable<User> GetUsersOfDepartment(Department department);
+        IEnumerable<TEntity> GetUsersOfDepartment(Department department);
     }
 }
