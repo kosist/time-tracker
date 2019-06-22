@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BaseLayer.DataModels
 {
-    class UserReport
+    public class UserReport
     {
         public int Id { get; set; }
         public User User { get; set; }

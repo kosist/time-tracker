@@ -8,8 +8,13 @@ using BaseLayer.DataModels;
 
 namespace BaseLayer.IRepositories
 {
-    public interface IUserReporitory
+    public interface IUserRepository : IDisposable
     {
-        IEnumerable<TEntity> GetUsersOfDepartment(Department department);
+        IEnumerable<User> GetUsers();
+        IEnumerable<User> GetUsersOfDepartment(Department department);
+        User GetUserById(int userId);
+        void InsertUser(User user);
+        void DeleteUser(int userId);
+        void UpdateUser(User user);
     }
 }
