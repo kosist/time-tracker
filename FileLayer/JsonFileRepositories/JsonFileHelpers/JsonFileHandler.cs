@@ -3,9 +3,9 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace FileLayer
+namespace FileLayer.JsonFileRepositories.JsonFileHelpers
 {
-    class JsonFileHandler<TObj> where TObj : class
+    public class JsonFileHandler<TObj> where TObj : class
     {
         protected string FilePath;
         public JsonFileHandler(string filePath)
@@ -69,14 +69,14 @@ namespace FileLayer
         } 
         #endregion
 
-        #region PrivateMethods
-        private StreamReader OpenReader()
+        #region ProtectedMethods
+        protected StreamReader OpenReader()
         {
             var file = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.Read, FileShare.None);
             StreamReader fileReader = new StreamReader(file);
             return fileReader;
         }
-        private StreamWriter OpenWriter()
+        protected StreamWriter OpenWriter()
         {
             var file = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.None);
             StreamWriter fileWriter = new StreamWriter(file);

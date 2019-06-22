@@ -44,7 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonFileRepositories\RepositoryJsonFile.cs" />
+    <Compile Include="JsonFileRepositories\JsonFileHelpers\JsonFileHandler.cs" />
+    <Compile Include="JsonFileRepositories\JsonFileHelpers\JsonFileTimeRecordHandler.cs" />
+    <Compile Include="JsonFileRepositories\JsonFileHelpers\JsonFileUserHandler.cs" />
     <Compile Include="JsonFileRepositories\TimeRecordRepositoryJsonFile.cs" />
     <Compile Include="JsonFileRepositories\UserReportRepositoryJsonFile.cs" />
     <Compile Include="JsonFileRepositories\UserRepositoryJsonFile.cs" />

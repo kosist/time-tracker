@@ -1,23 +1,60 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeTracker.Data;
-using TimeTracker.RepositoriesInterfaces;
+using System.Net;
+using BaseLayer.DataModels;
+using BaseLayer.IRepositories;
+using FileLayer.JsonFileRepositories.JsonFileHelpers;
 
-namespace TimeTracker.RepositoriesImplementation
+namespace FileLayer.JsonFileRepositories
 {
-    class UserReportRepositoryJsonFile : RepositoryJsonFile<UserReport>, IUserReportRepository
+    public class UserReportRepositoryJsonFile : IUserReportRepository
     {
-
-        public UserReportRepositoryJsonFile(string filePath) : base(filePath)
+        protected string FilePath;
+        protected JsonFileUserReportHandler FileHandler;
+        public UserReportRepositoryJsonFile(string filePath)
         {
+            FilePath = filePath;
+            FileHandler = new JsonFileUserReportHandler(filePath);
         }
 
+        #region Interface Implementation
+        public UserReport GetUserReportById(int reportId)
+        {
+            var report = FileHandler.GetObjectById(reportId);
+            return report;
+        }
+
+        public IEnumerable<UserReport> GetUserReports()
+        {
+            return FileHandler.GetAllObjects();
+        }
+
+        public void InsertUserReport(UserReport report)
+        {
+            FileHandler.AddObject(report);
+        }
+
+        public void UpdateUserReport(UserReport report)
+        {
+            FileHandler.UpdateUserReport(report);
+        }
+
+        public void DeleteUserReport(UserReport report)
+        {
+            FileHandler.RemoveObject(report);
+        }
+
+        public void Dispose()
+        {
+
+        } 
+        #endregion
+
+        #region Specific Methods
         public IEnumerable<UserReport> GetMonthlyReports(User user, DateTime month)
         {
-            var report = GetAll().Where(r => r.User.Name == user.Name
+            var report = GetUserReports().Where(r => r.User.Name == user.Name
                                              && r.User.Surname == user.Surname
                                              && r.Date.Year == month.Year
                                              && r.Date.Month == month.Month).ToList();
@@ -26,7 +63,7 @@ namespace TimeTracker.RepositoriesImplementation
 
         public IEnumerable<UserReport> GetWeeklyReports(User user, DateTime weekStartDate)
         {
-            var report = GetAll().Where(r => r.User.Name == user.Name
+            var report = GetUserReports().Where(r => r.User.Name == user.Name
                                              && r.User.Surname == user.Surname
                                              && r.Date.Year == weekStartDate.Year
                                              && r.Date.DayOfYear >= weekStartDate.DayOfYear
@@ -36,10 +73,11 @@ namespace TimeTracker.RepositoriesImplementation
 
         public IEnumerable<UserReport> GetYearlyReports(User user, DateTime year)
         {
-            var report = GetAll().Where(r => r.User.Name == user.Name
+            var report = GetUserReports().Where(r => r.User.Name == user.Name
                                              && r.User.Surname == user.Surname
                                              && r.Date.Year == year.Year).ToList();
             return report;
-        }
+        } 
+        #endregion
     }
 }

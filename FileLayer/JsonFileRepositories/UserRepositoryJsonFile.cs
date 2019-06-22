@@ -1,25 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BaseLayer.DataModels;
 using BaseLayer.IRepositories;
-using FileLayer;
+using FileLayer.JsonFileRepositories.JsonFileHelpers;
 
-namespace TimeTracker.RepositoriesImplementation
+namespace FileLayer.JsonFileRepositories
 {
     class UserRepositoryJsonFile : IUserRepository
     {
 
         protected string FilePath;
-        protected JsonFileHandler<User> FileHandler;
+        protected JsonFileUserHandler FileHandler;
 
         public UserRepositoryJsonFile(string filePath)
         {
             FilePath = filePath;
-            FileHandler = new JsonFileHandler<User>(FilePath);
+            FileHandler = new JsonFileUserHandler(FilePath);
         }
+
+        #region Interface Implementation
 
         public User GetUserById(int userId)
         {
@@ -45,17 +44,20 @@ namespace TimeTracker.RepositoriesImplementation
 
         public void UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            FileHandler.UpdateUser(user);
         }
 
         public void Dispose()
         {
         }
+        #endregion
 
+        #region Specific Methods
         public IEnumerable<User> GetUsersOfDepartment(Department department)
         {
             var usersOfDepartment = GetUsers().Where(u => u.Department.Name == department.Name);
             return usersOfDepartment.ToList();
-        }
+        } 
+        #endregion
     }
 }
