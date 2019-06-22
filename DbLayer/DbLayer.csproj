@@ -59,6 +59,11 @@
     <Compile Include="DataModels\UserReportDb.cs" />
     <Compile Include="DbRepositories\TimeRecordRepositoryDb.cs" />
     <Compile Include="DbRepositories\UserRepositoryDb.cs" />
+    <Compile Include="Mapping\DepartmentProfile.cs" />
+    <Compile Include="Mapping\MapperInitializer.cs" />
+    <Compile Include="Mapping\TimeRecordProfile.cs" />
+    <Compile Include="Mapping\UserProfile.cs" />
+    <Compile Include="Mapping\UserRecordProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
