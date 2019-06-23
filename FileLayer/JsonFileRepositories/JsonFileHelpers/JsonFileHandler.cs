@@ -15,6 +15,7 @@ namespace FileLayer.JsonFileRepositories.JsonFileHelpers
         }
 
         #region PublicHelperMethods
+        // works in case of sequential Id assign - which should not be true all the time for file entries
         public TObj GetObjectById(int id)
         {
             IEnumerable<TObj> records = GetAllObjects();

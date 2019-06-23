@@ -21,7 +21,7 @@ namespace FileLayer.JsonFileRepositories
         #region Interface Implementation
         public UserReport GetUserReportById(int reportId)
         {
-            var report = FileHandler.GetObjectById(reportId);
+            var report= FileHandler.GetObjectById(reportId);
             return report;
         }
 
