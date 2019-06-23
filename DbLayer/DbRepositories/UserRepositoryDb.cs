@@ -27,7 +27,7 @@ namespace DbLayer.DbRepositories
         public User GetUserById(int userId)
         {
             var userDb = Entities.Find(userId);
-            return Mapper.Map<UserDb, User>(userDb)
+            return Mapper.Map<UserDb, User>(userDb);
         }
 
         public IEnumerable<User> GetUsers()
