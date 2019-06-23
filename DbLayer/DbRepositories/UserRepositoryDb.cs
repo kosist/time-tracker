@@ -15,30 +15,30 @@ namespace DbLayer.DbRepositories
     {
         private bool _disposed = false;
         protected readonly DbContext Context;
-        private readonly DbSet<UserDb> Entities;
+        private readonly DbSet<UserDb> _entities;
         public UserRepositoryDb(DbContext context)
         {
             Context = context;
-            Entities = Context.Set<UserDb>();
+            _entities = Context.Set<UserDb>();
         }
 
         #region Interface implementation
 
         public User GetUserById(int userId)
         {
-            var userDb = Entities.Find(userId);
+            var userDb = _entities.Find(userId);
             return Mapper.Map<UserDb, User>(userDb);
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return Entities.ToList().Select(Mapper.Map<UserDb, User>);
+            return _entities.ToList().Select(Mapper.Map<UserDb, User>);
         }
 
         public void InsertUser(User user)
         {
             var userDb = Mapper.Map<User, UserDb>(user);
-            Entities.Add(userDb);
+            _entities.Add(userDb);
         }
 
         public void UpdateUser(User user)
@@ -50,7 +50,7 @@ namespace DbLayer.DbRepositories
         public void DeleteUser(User user)
         {
             var userDb = Mapper.Map<User, UserDb>(user);
-            Entities.Remove(userDb);
+            _entities.Remove(userDb);
         }
         protected virtual void Dispose(bool disposing)
         {
@@ -76,7 +76,7 @@ namespace DbLayer.DbRepositories
         public IEnumerable<User> GetUsersOfDepartment(Department department)
         {
             var departmentDb = Mapper.Map<Department, DepartmentDb>(department);
-            return Entities.Include(u => u.Department).Where(u => u.Department.Id == departmentDb.Id).ToList().Select(Mapper.Map<UserDb, User>);
+            return _entities.Include(u => u.Department).Where(u => u.Department.Id == departmentDb.Id).ToList().Select(Mapper.Map<UserDb, User>);
         } 
         #endregion
 
