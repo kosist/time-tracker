@@ -66,7 +66,13 @@ namespace FileLayer.JsonFileRepositories.JsonFileHelpers
             }
             File.Delete(FilePath);
             File.Move(tempFile, FilePath);
-        } 
+        }
+
+        public void DisposeFile()
+        {
+            File.Delete(FilePath);
+        }
+
         #endregion
 
         #region ProtectedMethods

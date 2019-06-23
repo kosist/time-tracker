@@ -47,7 +47,7 @@ namespace FileLayer.JsonFileRepositories
 
         public void Dispose()
         {
-
+            FileHandler.DisposeFile();
         } 
         #endregion
 
