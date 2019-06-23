@@ -6,7 +6,7 @@ using FileLayer.JsonFileRepositories.JsonFileHelpers;
 
 namespace FileLayer.JsonFileRepositories
 {
-    class UserRepositoryJsonFile : IUserRepository
+    public class UserRepositoryJsonFile : IUserRepository
     {
 
         protected string FilePath;

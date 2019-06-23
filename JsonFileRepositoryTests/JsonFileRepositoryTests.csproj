@@ -58,12 +58,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupportRepositoryJsonFileTesting.cs" />
+    <Compile Include="UserRepoJsonFileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.10.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">
+      <Project>{e674e724-28a5-45d9-8ff1-6cf93f28ac3a}</Project>
+      <Name>BaseLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileLayer\FileLayer.csproj">
+      <Project>{23d20bc4-45ec-424a-9a23-f33105b8887d}</Project>
+      <Name>FileLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
