@@ -41,10 +41,11 @@ namespace JsonFileRepositoryTests
             return user;
         }
 
-        public static TimeRecord GenerateStartWorkingTimeRecord(User user, int daysShiftFromToday)
+        public static TimeRecord GenerateStartWorkingTimeRecord(int id, User user, int daysShiftFromToday)
         {
             var timeRecord = new TimeRecord
             {
+                Id = id,
                 User = user,
                 RecordTime = DateTime.Today.AddDays(daysShiftFromToday),
                 ActivityType = new ActivityType { Name = "Start Work" }

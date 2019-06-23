@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupportRepositoryJsonFileTesting.cs" />
+    <Compile Include="TimeRecordRepoJsonFileTests.cs" />
     <Compile Include="UserRepoJsonFileTests.cs" />
   </ItemGroup>
   <ItemGroup>
