@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DbLayer.DataModels
 {
     [Table("Users")]
-    class UserDb
+    public class UserDb
     {
         public int Id { get; set; }
         [Required]
@@ -25,5 +25,7 @@ namespace DbLayer.DataModels
         [Required]
         [DefaultValue(60)]
         public int BreakDurationInMinutes { get; set; }
+
+        public string FullName => Name + " " + Surname;
     }
 }

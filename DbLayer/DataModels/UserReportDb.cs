@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace DbLayer.DataModels
 {
     [Table("UserReports")]
-    class UserReportDb
+    public class UserReportDb
     {
         public int Id { get; set; }
         public virtual UserDb User { get; set; }

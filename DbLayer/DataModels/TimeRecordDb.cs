@@ -1,10 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DbLayer.DataModels
 {
     [Table("TimeRecords")]
-    class TimeRecordDb
+    public class TimeRecordDb
     {
         public int Id { get; set; }
         public virtual UserDb User { get; set; }
