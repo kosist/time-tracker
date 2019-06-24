@@ -10,6 +10,10 @@ namespace DbLayer
 {
     public class TimeTrackerDbContext : DbContext
     {
+        public TimeTrackerDbContext() : base("TimeTracker")
+        {
+            
+        }
         public DbSet<UserDb> Users { get; set; }
         public DbSet<UserReportDb> UserReports { get; set; }
         public DbSet<TimeRecordDb> TimeRecords { get; set; }
