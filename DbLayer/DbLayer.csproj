@@ -65,9 +65,9 @@
     <Compile Include="Mapping\TimeRecordProfile.cs" />
     <Compile Include="Mapping\UserProfile.cs" />
     <Compile Include="Mapping\UserRecordProfile.cs" />
-    <Compile Include="Migrations\201906241826532_InitialTablesCreation.cs" />
-    <Compile Include="Migrations\201906241826532_InitialTablesCreation.Designer.cs">
-      <DependentUpon>201906241826532_InitialTablesCreation.cs</DependentUpon>
+    <Compile Include="Migrations\201906241834211_InitialTablesCreation.cs" />
+    <Compile Include="Migrations\201906241834211_InitialTablesCreation.Designer.cs">
+      <DependentUpon>201906241834211_InitialTablesCreation.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,13 +80,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906241826532_InitialTablesCreation.resx">
-      <DependentUpon>201906241826532_InitialTablesCreation.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201906241834211_InitialTablesCreation.resx">
+      <DependentUpon>201906241834211_InitialTablesCreation.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
