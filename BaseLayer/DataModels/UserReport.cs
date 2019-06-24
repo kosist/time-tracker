@@ -15,7 +15,7 @@ namespace BaseLayer.DataModels
         public float BreakHours { get; set; }
         public float TimeDifference { get; set; }
         public string TimeDifferenceReason { get; set; }
-        public User ApprovedBy { get; set; }
+        public User ApprovedByUser { get; set; }
         public bool ApprovedFlag { get; set; }
     }
 }

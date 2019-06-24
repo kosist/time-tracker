@@ -9,11 +9,12 @@ using DbLayer.DataModels;
 
 namespace DbLayer.Mapping
 {
-    class UserRecordProfile : Profile
+    public class UserRecordProfile : Profile
     {
         public UserRecordProfile()
         {
-            CreateMap<UserReportDb, UserReport>();
+            CreateMap<UserReportDb, UserReport>()
+                .ForMember(u => u.ApprovedByUser, opt => opt.MapFrom(src => src.ApprovedByUser));
 
             CreateMap<UserReport, UserReportDb>()
                 .ForMember(u => u.ApprovedByUserId, opt => opt.Ignore())

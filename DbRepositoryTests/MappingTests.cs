@@ -4,21 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using DbLayer.Mapping;
+using Xunit;
 
-namespace DbLayer.Mapping
+namespace DbRepositoryTests
 {
-    public class MapperInitializer
+    public class MappingTests
     {
-        [Obsolete]
-        public MapperInitializer()
+        [Fact]
+        public void TestConfiguration()
         {
-            Mapper.Initialize(cfg =>
-            {
+            var config = new MapperConfiguration(cfg => {
                 cfg.AddProfile<UserProfile>();
+                cfg.AddProfile<PositionProfile>();
+                cfg.AddProfile<ActivityTypeProfile>();
                 cfg.AddProfile<TimeRecordProfile>();
                 cfg.AddProfile<UserRecordProfile>();
                 cfg.AddProfile<DepartmentProfile>();
             });
+
+            config.AssertConfigurationIsValid();
         }
+
+        
     }
 }

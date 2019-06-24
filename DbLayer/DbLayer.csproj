@@ -60,8 +60,9 @@
     <Compile Include="DbRepositories\TimeRecordRepositoryDb.cs" />
     <Compile Include="DbRepositories\UserReportRepositoryDb.cs" />
     <Compile Include="DbRepositories\UserRepositoryDb.cs" />
+    <Compile Include="Mapping\ActivityTypeProfile.cs" />
     <Compile Include="Mapping\DepartmentProfile.cs" />
-    <Compile Include="Mapping\MapperInitializer.cs" />
+    <Compile Include="Mapping\PositionProfile.cs" />
     <Compile Include="Mapping\TimeRecordProfile.cs" />
     <Compile Include="Mapping\UserProfile.cs" />
     <Compile Include="Mapping\UserRecordProfile.cs" />

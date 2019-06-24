@@ -9,7 +9,7 @@ using DbLayer.DataModels;
 
 namespace DbLayer.Mapping
 {
-    class UserProfile : Profile
+    public class UserProfile : Profile
     {
         public UserProfile()
         {

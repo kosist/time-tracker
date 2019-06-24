@@ -9,13 +9,13 @@ using DbLayer.DataModels;
 
 namespace DbLayer.Mapping
 {
-    public class DepartmentProfile : Profile
+    public class PositionProfile : Profile
     {
-        public DepartmentProfile()
+        public PositionProfile()
         {
-            CreateMap<Department, DepartmentDb>();
+            CreateMap<Position, PositionDb>();
 
-            CreateMap<DepartmentDb, Department>();
+            CreateMap<PositionDb, Position>();
         }
     }
 }
