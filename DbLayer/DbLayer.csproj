@@ -57,7 +57,9 @@
     <Compile Include="DataModels\TimeRecordDb.cs" />
     <Compile Include="DataModels\UserDb.cs" />
     <Compile Include="DataModels\UserReportDb.cs" />
+    <Compile Include="DbRepositories\IUnitOfWork.cs" />
     <Compile Include="DbRepositories\TimeRecordRepositoryDb.cs" />
+    <Compile Include="DbRepositories\UnitOfWork.cs" />
     <Compile Include="DbRepositories\UserReportRepositoryDb.cs" />
     <Compile Include="DbRepositories\UserRepositoryDb.cs" />
     <Compile Include="Mapping\ActivityTypeProfile.cs" />
