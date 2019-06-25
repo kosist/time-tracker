@@ -16,6 +16,7 @@ namespace BaseLayer.DataModels
         public int NumberOfWorkingDaysPerWeek { get; set; }
         public float NumberOfDailyWorkHours { get; set; }
         public int BreakDurationInMinutes { get; set; }
+        public string FullName => Name + " " + Surname;
 
     }
 }

@@ -13,7 +13,6 @@ namespace DbRepositoryTests
         {
             var user = new User
             {
-                Id = 0,
                 Name = "John",
                 Surname = "Malkovic",
                 Department = new Department { Name = department },
@@ -29,7 +28,6 @@ namespace DbRepositoryTests
         {
             var user = new User
             {
-                Id = 1,
                 Name = "Will",
                 Surname = "Smith",
                 Department = new Department { Name = department },

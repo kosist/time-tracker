@@ -26,6 +26,5 @@ namespace DbLayer.DataModels
         [DefaultValue(60)]
         public int BreakDurationInMinutes { get; set; }
 
-        public string FullName => Name + " " + Surname;
     }
 }

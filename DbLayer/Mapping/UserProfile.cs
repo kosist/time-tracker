@@ -13,7 +13,8 @@ namespace DbLayer.Mapping
     {
         public UserProfile()
         {
-            CreateMap<UserDb, User>();
+            CreateMap<UserDb, User>()
+                .ForMember(u => u.FullName, opt => opt.Ignore());
 
             CreateMap<User, UserDb>()
                 .ForMember(u => u.DepartmentId, opt => opt.Ignore())
