@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201906241834211_InitialTablesCreation.Designer.cs">
       <DependentUpon>201906241834211_InitialTablesCreation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906262012259_MinorChanges.cs" />
+    <Compile Include="Migrations\201906262012259_MinorChanges.Designer.cs">
+      <DependentUpon>201906262012259_MinorChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeTrackerDbContext.cs" />
@@ -89,6 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906241834211_InitialTablesCreation.resx">
       <DependentUpon>201906241834211_InitialTablesCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906262012259_MinorChanges.resx">
+      <DependentUpon>201906262012259_MinorChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

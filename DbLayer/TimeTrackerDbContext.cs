@@ -11,14 +11,15 @@ namespace DbLayer
 {
     public class TimeTrackerDbContext : DbContext
     {
-        public TimeTrackerDbContext(string connection = "TimeTracker") : base(connection)
+        public TimeTrackerDbContext() : base("TimeTracker")
         {
-            
+
         }
 
         public TimeTrackerDbContext(DbConnection connection) : base(connection, false)
         {
         }
+
         public DbSet<UserDb> Users { get; set; }
         public DbSet<UserReportDb> UserReports { get; set; }
         public DbSet<TimeRecordDb> TimeRecords { get; set; }

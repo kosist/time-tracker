@@ -76,8 +76,6 @@
   <ItemGroup>
     <Compile Include="MappingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SupportDbTesting.cs" />
-    <Compile Include="UserRepoDbTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
