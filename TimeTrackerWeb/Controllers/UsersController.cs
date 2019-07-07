@@ -13,5 +13,10 @@ namespace TimeTrackerWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }

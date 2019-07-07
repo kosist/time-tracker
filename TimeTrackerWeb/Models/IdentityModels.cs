@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DbLayer.DataModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -20,9 +21,13 @@ namespace TimeTrackerWeb.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<UserDb> UsersDb { get; set; }
+        public DbSet<UserReportDb> UserReports { get; set; }
+        public DbSet<TimeRecordDb> TimeRecords { get; set; }
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("TimeTracker", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()

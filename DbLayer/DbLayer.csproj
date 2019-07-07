@@ -68,21 +68,7 @@
     <Compile Include="Mapping\TimeRecordProfile.cs" />
     <Compile Include="Mapping\UserProfile.cs" />
     <Compile Include="Mapping\UserRecordProfile.cs" />
-    <Compile Include="Migrations\201906241834211_InitialTablesCreation.cs" />
-    <Compile Include="Migrations\201906241834211_InitialTablesCreation.Designer.cs">
-      <DependentUpon>201906241834211_InitialTablesCreation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906262012259_MinorChanges.cs" />
-    <Compile Include="Migrations\201906262012259_MinorChanges.Designer.cs">
-      <DependentUpon>201906262012259_MinorChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907071012272_SetDefaultTablesData.cs" />
-    <Compile Include="Migrations\201907071012272_SetDefaultTablesData.Designer.cs">
-      <DependentUpon>201907071012272_SetDefaultTablesData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimeTrackerDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BaseLayer\BaseLayer.csproj">
@@ -97,17 +83,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906241834211_InitialTablesCreation.resx">
-      <DependentUpon>201906241834211_InitialTablesCreation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906262012259_MinorChanges.resx">
-      <DependentUpon>201906262012259_MinorChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907071012272_SetDefaultTablesData.resx">
-      <DependentUpon>201907071012272_SetDefaultTablesData.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

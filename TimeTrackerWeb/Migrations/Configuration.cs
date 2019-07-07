@@ -1,18 +1,18 @@
-namespace DbLayer.Migrations
+namespace TimeTrackerWeb.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<DbLayer.TimeTrackerDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TimeTrackerWeb.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(DbLayer.TimeTrackerDbContext context)
+        protected override void Seed(TimeTrackerWeb.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

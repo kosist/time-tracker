@@ -1,12 +1,11 @@
-using System.Data.SqlClient;
+using Common.Tables;
 
-namespace DbLayer.Migrations
+namespace TimeTrackerWeb.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
-    using Common.Tables;
-    
-    public partial class SetDefaultTablesData : DbMigration
+
+    public partial class PopulateListTables : DbMigration
     {
         public override void Up()
         {
@@ -33,12 +32,13 @@ namespace DbLayer.Migrations
             Sql("INSERT INTO Positions VALUES ('HR Manager')");
             Sql("INSERT INTO Positions VALUES ('Sales Representative')");
         }
-        
+
         public override void Down()
         {
             Sql("DROP Departments");
             Sql("DROP ActivityTypes");
             Sql("DROP Positions");
+
         }
     }
 }
