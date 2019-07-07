@@ -16,8 +16,8 @@ namespace DbLayer.Mapping
             CreateMap<TimeRecordDb, TimeRecord>();
 
             CreateMap<TimeRecord, TimeRecordDb>()
-                .ForMember(r => r.UserId, opt => opt.Ignore())
-                .ForMember(r => r.ActivityTypeId, opt => opt.Ignore());
+                .ForMember(r => r.UserId, opt => opt.MapFrom(src => src.User.Id))
+                .ForMember(r => r.ActivityTypeId, opt => opt.MapFrom(src => src.ActivityType.Id));
         }
     }
 }

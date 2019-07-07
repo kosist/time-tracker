@@ -17,8 +17,8 @@ namespace DbLayer.Mapping
                 .ForMember(u => u.ApprovedByUser, opt => opt.MapFrom(src => src.ApprovedByUser));
 
             CreateMap<UserReport, UserReportDb>()
-                .ForMember(u => u.ApprovedByUserId, opt => opt.Ignore())
-                .ForMember(u => u.UserId, opt => opt.Ignore());
+                .ForMember(u => u.ApprovedByUserId, opt => opt.MapFrom(src => src.ApprovedByUser.Id))
+                .ForMember(u => u.UserId, opt => opt.MapFrom(src => src.User.Id));
 
         }
     }
