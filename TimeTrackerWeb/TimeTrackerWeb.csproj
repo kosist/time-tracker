@@ -173,6 +173,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Dtos\ActivityTypeDto.cs" />
     <Compile Include="Dtos\DepartmentDto.cs" />
     <Compile Include="Dtos\PositionDto.cs" />
@@ -183,6 +184,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapping\ActivityTypeDtoProfile.cs" />
+    <Compile Include="Mapping\AutoMapperWebConfiguration.cs" />
     <Compile Include="Mapping\DepartmentDtoProfile.cs" />
     <Compile Include="Mapping\PositionDtoProfile.cs" />
     <Compile Include="Mapping\TimeRecordDtoProfile.cs" />
