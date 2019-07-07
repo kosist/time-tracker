@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using DbLayer.DataModels;
+using BaseLayer.DataModels;
 using TimeTrackerWeb.Dtos;
 
 namespace TimeTrackerWeb.Mapping
@@ -8,9 +8,9 @@ namespace TimeTrackerWeb.Mapping
     {
         public DepartmentDtoProfile()
         {
-            CreateMap<DepartmentDto, DepartmentDb>();
+            CreateMap<DepartmentDto, Department>();
 
-            CreateMap<DepartmentDb, DepartmentDto>();
+            CreateMap<Department, DepartmentDto>();
         }
     }
 }
