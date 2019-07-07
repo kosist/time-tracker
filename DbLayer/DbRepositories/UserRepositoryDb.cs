@@ -16,10 +16,12 @@ namespace DbLayer.DbRepositories
         private bool _disposed = false;
         protected readonly DbContext Context;
         private readonly DbSet<UserDb> _entities;
-        public UserRepositoryDb(DbContext context)
+        private readonly IMapper _mapper;
+        public UserRepositoryDb(DbContext context, IMapper mapper)
         {
             Context = context;
             _entities = Context.Set<UserDb>();
+            _mapper = mapper;
         }
 
         #region Interface implementation
@@ -27,29 +29,29 @@ namespace DbLayer.DbRepositories
         public User GetUserById(int userId)
         {
             var userDb = _entities.Find(userId);
-            return Mapper.Map<UserDb, User>(userDb);
+            return _mapper.Map<UserDb, User>(userDb);
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _entities.ToList().Select(Mapper.Map<UserDb, User>);
+            return _entities.ToList().Select(_mapper.Map<UserDb, User>);
         }
 
         public void InsertUser(User user)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             _entities.Add(userDb);
         }
 
         public void UpdateUser(User user)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             Context.Entry(userDb).State = EntityState.Modified;
         }
 
         public void DeleteUser(User user)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             _entities.Remove(userDb);
         }
         protected virtual void Dispose(bool disposing)
@@ -75,8 +77,8 @@ namespace DbLayer.DbRepositories
         #region Specific methods
         public IEnumerable<User> GetUsersOfDepartment(Department department)
         {
-            var departmentDb = Mapper.Map<Department, DepartmentDb>(department);
-            return _entities.Include(u => u.Department).Where(u => u.Department.Id == departmentDb.Id).ToList().Select(Mapper.Map<UserDb, User>);
+            var departmentDb = _mapper.Map<Department, DepartmentDb>(department);
+            return _entities.Include(u => u.Department).Where(u => u.Department.Id == departmentDb.Id).ToList().Select(_mapper.Map<UserDb, User>);
         } 
         #endregion
 

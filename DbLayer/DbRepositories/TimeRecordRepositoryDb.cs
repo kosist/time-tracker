@@ -16,40 +16,42 @@ namespace DbLayer.DbRepositories
         private bool _disposed = false;
         protected readonly DbContext Context;
         private readonly DbSet<TimeRecordDb> _entities;
+        private readonly IMapper _mapper;
 
-        public TimeRecordRepositoryDb(DbContext context)
+        public TimeRecordRepositoryDb(DbContext context, IMapper mapper)
         {
             Context = context;
             _entities = Context.Set<TimeRecordDb>();
+            _mapper = mapper;
         }
 
         #region Interface implementation
         public TimeRecord GeTimeRecordById(int recordId)
         {
             var recordDb = _entities.Find(recordId);
-            return Mapper.Map<TimeRecordDb, TimeRecord>(recordDb);
+            return _mapper.Map<TimeRecordDb, TimeRecord>(recordDb);
         }
 
         public IEnumerable<TimeRecord> GetTimeRecords()
         {
-            return _entities.ToList().Select(Mapper.Map<TimeRecordDb, TimeRecord>);
+            return _entities.ToList().Select(_mapper.Map<TimeRecordDb, TimeRecord>);
         }
 
         public void InsertTimeRecord(TimeRecord record)
         {
-            var recordDb = Mapper.Map<TimeRecord, TimeRecordDb>(record);
+            var recordDb = _mapper.Map<TimeRecord, TimeRecordDb>(record);
             _entities.Add(recordDb);
         }
 
         public void UpdateTimeRecord(TimeRecord record)
         {
-            var recordDb = Mapper.Map<TimeRecord, TimeRecordDb>(record);
+            var recordDb = _mapper.Map<TimeRecord, TimeRecordDb>(record);
             Context.Entry(recordDb).State = EntityState.Modified;
         }
 
         public void DeleteTimeRecord(TimeRecord record)
         {
-            var recordDb = Mapper.Map<TimeRecord, TimeRecordDb>(record);
+            var recordDb = _mapper.Map<TimeRecord, TimeRecordDb>(record);
             _entities.Remove(recordDb);
         }
 
@@ -76,7 +78,7 @@ namespace DbLayer.DbRepositories
 
         public IEnumerable<TimeRecord> GetUserDailyRecords(User user, DateTime dateTime)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             return _entities
                 .Include(r => r.User)
                 .Where(r => r.User.Id == userDb.Id && r.RecordTime.Date == dateTime.Date)
@@ -86,7 +88,7 @@ namespace DbLayer.DbRepositories
 
         public void RemoveLastUserRecord(User user)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             var recordDb = _entities
                 .Include(r => r.User)
                 .Last(r => r.UserId == userDb.Id);

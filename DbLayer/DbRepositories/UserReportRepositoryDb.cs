@@ -16,40 +16,42 @@ namespace DbLayer.DbRepositories
         private bool _disposed = false;
         protected readonly DbContext Context;
         private readonly DbSet<UserReportDb> _entities;
+        private readonly IMapper _mapper;
 
-        public UserReportRepositoryDb(DbContext context)
+        public UserReportRepositoryDb(DbContext context, IMapper mapper)
         {
             Context = context;
             _entities = Context.Set<UserReportDb>();
+            _mapper = mapper;
         }
 
         #region Interface implementation
         public UserReport GetUserReportById(int reportId)
         {
             var userReportDb = _entities.Find(reportId);
-            return Mapper.Map<UserReportDb, UserReport>(userReportDb);
+            return _mapper.Map<UserReportDb, UserReport>(userReportDb);
         }
 
         public IEnumerable<UserReport> GetUserReports()
         {
-            return _entities.ToList().Select(Mapper.Map<UserReportDb, UserReport>);
+            return _entities.ToList().Select(_mapper.Map<UserReportDb, UserReport>);
         }
 
         public void InsertUserReport(UserReport report)
         {
-            var userReportDb = Mapper.Map<UserReport, UserReportDb>(report);
+            var userReportDb = _mapper.Map<UserReport, UserReportDb>(report);
             _entities.Add(userReportDb);
         }
 
         public void UpdateUserReport(UserReport report)
         {
-            var userReportDb = Mapper.Map<UserReport, UserReportDb>(report);
+            var userReportDb = _mapper.Map<UserReport, UserReportDb>(report);
             Context.Entry(userReportDb).State = EntityState.Modified;
         }
 
         public void DeleteUserReport(UserReport report)
         {
-            var userReportDb = Mapper.Map<UserReport, UserReportDb>(report);
+            var userReportDb = _mapper.Map<UserReport, UserReportDb>(report);
             _entities.Remove(userReportDb);
         }
 
@@ -75,7 +77,7 @@ namespace DbLayer.DbRepositories
         #region Specific methods
         public IEnumerable<UserReport> GetMonthlyReports(User user, DateTime month)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             var reports = GetUserReports().Where(r => r.User.Name == userDb.Name
                                                      && r.User.Surname == userDb.Surname
                                                      && r.Date.Year == month.Year
@@ -85,7 +87,7 @@ namespace DbLayer.DbRepositories
 
         public IEnumerable<UserReport> GetWeeklyReports(User user, DateTime weekStartDate)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             var report = GetUserReports().Where(r => r.User.Name == user.Name
                                                      && r.User.Surname == user.Surname
                                                      && r.Date.Year == weekStartDate.Year
@@ -96,7 +98,7 @@ namespace DbLayer.DbRepositories
 
         public IEnumerable<UserReport> GetYearlyReports(User user, DateTime year)
         {
-            var userDb = Mapper.Map<User, UserDb>(user);
+            var userDb = _mapper.Map<User, UserDb>(user);
             var report = GetUserReports().Where(r => r.User.Name == user.Name
                                                      && r.User.Surname == user.Surname
                                                      && r.Date.Year == year.Year).ToList();

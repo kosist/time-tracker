@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using BaseLayer.IRepositories;
 
 namespace DbLayer.DbRepositories
@@ -16,12 +17,12 @@ namespace DbLayer.DbRepositories
         public ITimeRecordRepository TimeRecords { get; private set; }
         public IUserReportRepository UserReports { get; private set; }
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(DbContext context, IMapper mapper)
         {
             _context = context;
-            Users = new UserRepositoryDb(context);
-            TimeRecords = new TimeRecordRepositoryDb(context);
-            UserReports = new UserReportRepositoryDb(context);
+            Users = new UserRepositoryDb(context, mapper);
+            TimeRecords = new TimeRecordRepositoryDb(context, mapper);
+            UserReports = new UserReportRepositoryDb(context, mapper);
         }
 
         public int Complete()

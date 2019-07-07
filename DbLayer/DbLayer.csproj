@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperDbConfiguration.cs" />
     <Compile Include="DataModels\ActivityTypeDb.cs" />
     <Compile Include="DataModels\DepartmentDb.cs" />
     <Compile Include="DataModels\PositionDb.cs" />

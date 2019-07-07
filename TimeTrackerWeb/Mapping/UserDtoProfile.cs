@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BaseLayer.DataModels;
+using DbLayer.Mapping;
 using TimeTrackerWeb.Dtos;
 
 namespace TimeTrackerWeb.Mapping
