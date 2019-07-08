@@ -8,6 +8,7 @@ using BaseLayer.DataModels;
 using DbLayer.DbRepositories;
 using TimeTrackerWeb.Dtos;
 using TimeTrackerWeb.Mapping;
+using TimeTrackerWeb.ViewModels;
 
 namespace TimeTrackerWeb.Controllers
 {
@@ -28,7 +29,20 @@ namespace TimeTrackerWeb.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var positionsList = _context.LookupTables.GetPositions();
+            var departmentsList = _context.LookupTables.GetDepartments();
+            var model = new UserFormViewModel
+            {
+                User = new UserDto(),
+                Departments = _mapper.Map<IEnumerable<Department>, IEnumerable<DepartmentDto>>(departmentsList),
+                Positions = _mapper.Map<IEnumerable<Position>, IEnumerable<PositionDto>>(positionsList),
+            };
+            return View("UserForm", model);
+        }
+
+        public ActionResult Save()
+        {
+            throw new NotImplementedException();
         }
     }
 }

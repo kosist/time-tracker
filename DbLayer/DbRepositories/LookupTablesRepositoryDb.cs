@@ -16,32 +16,32 @@ namespace DbLayer.DbRepositories
     {
         private bool _disposed = false;
         protected readonly DbContext Context;
-        private readonly DbSet<Department> _departmentEntities;
-        private readonly DbSet<Position> _positionEntities;
-        private readonly DbSet<ActivityType> _activityTypeEntities;
+        private readonly DbSet<DepartmentDb> _departmentEntities;
+        private readonly DbSet<PositionDb> _positionEntities;
+        private readonly DbSet<ActivityTypeDb> _activityTypeEntities;
         private readonly IMapper _mapper;
 
         public LookupTablesRepositoryDb(DbContext context, IMapper mapper)
         {
             Context = context;
-            _departmentEntities = Context.Set<Department>();
-            _positionEntities = Context.Set<Position>();
-            _activityTypeEntities = Context.Set<ActivityType>();
+            _departmentEntities = Context.Set<DepartmentDb>();
+            _positionEntities = Context.Set<PositionDb>();
+            _activityTypeEntities = Context.Set<ActivityTypeDb>();
             _mapper = mapper;
         }
         public IEnumerable<Department> GetDepartments()
         {
-            return _departmentEntities.ProjectTo<Department>().ToList();
+            return _departmentEntities.ToList().Select(_mapper.Map<DepartmentDb, Department>);
         }
 
         public IEnumerable<Position> GetPositions()
         {
-            return _positionEntities.ProjectTo<Position>().ToList();
+            return _positionEntities.ToList().Select(_mapper.Map<PositionDb, Position>);
         }
 
         public IEnumerable<ActivityType> GetActivityTypes()
         {
-            return _activityTypeEntities.ProjectTo<ActivityType>().ToList();
+            return _activityTypeEntities.ToList().Select(_mapper.Map<ActivityTypeDb, ActivityType>);
         }
 
         protected virtual void Dispose(bool disposing)
