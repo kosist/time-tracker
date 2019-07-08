@@ -12,6 +12,7 @@ namespace DbLayer.DbRepositories
         IUserRepository Users { get; }
         ITimeRecordRepository TimeRecords { get; }
         IUserReportRepository UserReports { get; }
+        ILookupTablesRepository LookupTables { get; }
         int Complete();
     }
 }

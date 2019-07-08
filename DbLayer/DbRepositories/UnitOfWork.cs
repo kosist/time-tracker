@@ -16,6 +16,7 @@ namespace DbLayer.DbRepositories
         public IUserRepository Users{ get; private set; }
         public ITimeRecordRepository TimeRecords { get; private set; }
         public IUserReportRepository UserReports { get; private set; }
+        public ILookupTablesRepository LookupTables { get; private set; }
 
         public UnitOfWork(DbContext context, IMapper mapper)
         {
@@ -23,6 +24,7 @@ namespace DbLayer.DbRepositories
             Users = new UserRepositoryDb(context, mapper);
             TimeRecords = new TimeRecordRepositoryDb(context, mapper);
             UserReports = new UserReportRepositoryDb(context, mapper);
+            LookupTables = new LookupTablesRepositoryDb(context, mapper);
         }
 
         public int Complete()

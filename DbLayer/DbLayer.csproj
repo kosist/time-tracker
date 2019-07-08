@@ -59,6 +59,7 @@
     <Compile Include="DataModels\UserDb.cs" />
     <Compile Include="DataModels\UserReportDb.cs" />
     <Compile Include="DbRepositories\IUnitOfWork.cs" />
+    <Compile Include="DbRepositories\LookupTablesRepositoryDb.cs" />
     <Compile Include="DbRepositories\TimeRecordRepositoryDb.cs" />
     <Compile Include="DbRepositories\UnitOfWork.cs" />
     <Compile Include="DbRepositories\UserReportRepositoryDb.cs" />

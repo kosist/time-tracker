@@ -23,8 +23,7 @@ namespace TimeTrackerWeb.Controllers
         }
         public ActionResult Index()
         {
-            var user = _context.Users.GetUserById(2);
-            return View(_mapper.Map<User, UserDto>(user));
+            return View();
         }
 
         public ActionResult New()

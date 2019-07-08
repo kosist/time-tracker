@@ -47,6 +47,7 @@
     <Compile Include="DataModels\TimeRecord.cs" />
     <Compile Include="DataModels\User.cs" />
     <Compile Include="DataModels\UserReport.cs" />
+    <Compile Include="IRepositories\ILookupTablesRepository.cs" />
     <Compile Include="IRepositories\ITimeRecordRepository.cs" />
     <Compile Include="IRepositories\IUserReporitory.cs" />
     <Compile Include="IRepositories\IUserReportRepository.cs" />
