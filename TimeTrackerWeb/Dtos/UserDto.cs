@@ -18,10 +18,10 @@ namespace TimeTrackerWeb.Dtos
         public string Surname { get; set; }
 
         [DisplayName("Departments List")]
-        public int DepartmentId { get; set; }
+        public DepartmentDto Department { get; set; }
 
         [DisplayName("Positions List")]
-        public int PositionId { get; set; }
+        public PositionDto Position { get; set; }
 
         [Required]
         [DefaultValue(5)]

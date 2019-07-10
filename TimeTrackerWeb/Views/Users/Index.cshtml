@@ -1,6 +1,29 @@
-﻿@{
+﻿@model IEnumerable<TimeTrackerWeb.Dtos.UserDto>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<h2>Users</h2>
+<a href="Users/New" class="btn btn-primary" role="button"> New User </a>
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>User Name</th>
+        <th>Department</th>
+        <th>Position</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(user.FullName, "Edit", "Users", new { id = user.Id }, null)</td>
+            <td>@user.Department.Name</td>
+            <td>@user.Position.Name</td>
+        </tr>
+    }
+    </tbody>
+</table>
 

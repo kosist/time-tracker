@@ -190,7 +190,9 @@
     <Compile Include="Mapping\ActivityTypeDtoProfile.cs" />
     <Compile Include="Mapping\AutoMapperWebConfiguration.cs" />
     <Compile Include="Mapping\DepartmentDtoProfile.cs" />
+    <Compile Include="Mapping\DepartmentValueResolver.cs" />
     <Compile Include="Mapping\PositionDtoProfile.cs" />
+    <Compile Include="Mapping\PositionValueResolver.cs" />
     <Compile Include="Mapping\TimeRecordDtoProfile.cs" />
     <Compile Include="Mapping\UserDtoProfile.cs" />
     <Compile Include="Mapping\UserRecordDtoProfile.cs" />
@@ -201,6 +203,10 @@
     <Compile Include="Migrations\201907071519021_PopulateListTables.cs" />
     <Compile Include="Migrations\201907071519021_PopulateListTables.Designer.cs">
       <DependentUpon>201907071519021_PopulateListTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907092034402_RemoveRequiredAnnotationForLookupTables.cs" />
+    <Compile Include="Migrations\201907092034402_RemoveRequiredAnnotationForLookupTables.Designer.cs">
+      <DependentUpon>201907092034402_RemoveRequiredAnnotationForLookupTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -305,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907071519021_PopulateListTables.resx">
       <DependentUpon>201907071519021_PopulateListTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907092034402_RemoveRequiredAnnotationForLookupTables.resx">
+      <DependentUpon>201907092034402_RemoveRequiredAnnotationForLookupTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

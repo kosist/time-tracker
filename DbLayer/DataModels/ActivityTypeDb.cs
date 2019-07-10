@@ -7,7 +7,6 @@ namespace DbLayer.DataModels
     public class ActivityTypeDb
     {
         public int Id { get; set; }
-        [Required]
         public string Name { get; set; }
     }
 }

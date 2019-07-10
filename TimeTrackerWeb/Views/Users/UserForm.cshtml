@@ -19,13 +19,13 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.User.DepartmentId)
-        @Html.DropDownListFor(m => m.User.DepartmentId, new SelectList(Model.Departments, "Id", "Name"), "Select Department", new { @class = "form-control" })
+        @Html.LabelFor(m => m.User.Department.Id)
+        @Html.DropDownListFor(m => m.User.Department.Id, new SelectList(Model.Departments, "Id", "Name"), "Select Department", new { @class = "form-control" })
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.User.PositionId)
-        @Html.DropDownListFor(m => m.User.PositionId, new SelectList(Model.Positions, "Id", "Name"), "Select Position", new { @class = "form-control" })
+        @Html.LabelFor(m => m.User.Position.Id)
+        @Html.DropDownListFor(m => m.User.Position.Id, new SelectList(Model.Positions, "Id", "Name"), "Select Position", new { @class = "form-control" })
     </div>
 
     <div class="form-group">

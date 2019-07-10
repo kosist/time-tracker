@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace DbLayer.DbRepositories
         public void UpdateUserReport(UserReport report)
         {
             var userReportDb = _mapper.Map<UserReport, UserReportDb>(report);
-            Context.Entry(userReportDb).State = EntityState.Modified;
+            _entities.AddOrUpdate(userReportDb);
         }
 
         public void DeleteUserReport(UserReport report)

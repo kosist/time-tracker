@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using System.EnterpriseServices;
+using AutoMapper;
 using BaseLayer.DataModels;
+using DbLayer.DbRepositories;
 using DbLayer.Mapping;
 using TimeTrackerWeb.Dtos;
 
@@ -9,13 +11,9 @@ namespace TimeTrackerWeb.Mapping
     {
         public UserDtoProfile()
         {
-            CreateMap<User, UserDto>()
-                .ForMember(u => u.DepartmentId, opt => opt.MapFrom(src => src.Department.Id))
-                .ForMember(u => u.PositionId, opt => opt.MapFrom(src => src.Position.Id));
+            CreateMap<User, UserDto>();
 
-            CreateMap<UserDto, User>()
-                .ForMember(u => u.Department, opt => opt.Ignore())
-                .ForMember(u => u.Position, opt => opt.Ignore());
+            CreateMap<UserDto, User>();
         }
     }
 }

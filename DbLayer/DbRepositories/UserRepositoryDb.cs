@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace DbLayer.DbRepositories
 
         public IEnumerable<User> GetUsers()
         {
-            return _entities.ToList().Select(_mapper.Map<UserDb, User>);
+            return _entities.Include(user => user.Department).Include(user => user.Position).ToList().Select(_mapper.Map<UserDb, User>);
         }
 
         public void InsertUser(User user)
@@ -46,7 +47,7 @@ namespace DbLayer.DbRepositories
         public void UpdateUser(User user)
         {
             var userDb = _mapper.Map<User, UserDb>(user);
-            Context.Entry(userDb).State = EntityState.Modified;
+            _entities.AddOrUpdate(userDb);
         }
 
         public void DeleteUser(User user)

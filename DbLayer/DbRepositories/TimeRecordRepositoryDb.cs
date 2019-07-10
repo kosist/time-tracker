@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace DbLayer.DbRepositories
         public void UpdateTimeRecord(TimeRecord record)
         {
             var recordDb = _mapper.Map<TimeRecord, TimeRecordDb>(record);
-            Context.Entry(recordDb).State = EntityState.Modified;
+            _entities.AddOrUpdate(recordDb);
         }
 
         public void DeleteTimeRecord(TimeRecord record)

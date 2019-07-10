@@ -8,20 +8,29 @@ namespace DbLayer.DataModels
     public class UserDb
     {
         public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
         public string Surname { get; set; }
-        public virtual DepartmentDb Department { get; set; }
+
+        public DepartmentDb Department { get; set; }
+
         public int DepartmentId { get; set; }
-        public virtual PositionDb Position { get; set; }
+
+        public PositionDb Position { get; set; }
+
         public int PositionId { get; set; }
+
         [Required]
         [DefaultValue(5)]
         public int NumberOfWorkingDaysPerWeek { get; set; }
+
         [Required]
         [DefaultValue(8)]
         public float NumberOfDailyWorkHours { get; set; }
+
         [Required]
         [DefaultValue(60)]
         public int BreakDurationInMinutes { get; set; }
