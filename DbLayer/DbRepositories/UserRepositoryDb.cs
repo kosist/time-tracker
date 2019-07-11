@@ -29,13 +29,20 @@ namespace DbLayer.DbRepositories
 
         public User GetUserById(int userId)
         {
-            var userDb = _entities.Find(userId);
+            var userDb = _entities
+                .Include(user => user.Department)
+                .Include(user => user.Position)
+                .SingleOrDefault(user => user.Id == userId);
             return _mapper.Map<UserDb, User>(userDb);
         }
 
         public IEnumerable<User> GetUsers()
         {
-            return _entities.Include(user => user.Department).Include(user => user.Position).ToList().Select(_mapper.Map<UserDb, User>);
+            return _entities
+                .Include(user => user.Department)
+                .Include(user => user.Position)
+                .ToList()
+                .Select(_mapper.Map<UserDb, User>);
         }
 
         public void InsertUser(User user)
@@ -79,7 +86,11 @@ namespace DbLayer.DbRepositories
         public IEnumerable<User> GetUsersOfDepartment(Department department)
         {
             var departmentDb = _mapper.Map<Department, DepartmentDb>(department);
-            return _entities.Include(u => u.Department).Where(u => u.Department.Id == departmentDb.Id).ToList().Select(_mapper.Map<UserDb, User>);
+            return _entities
+                .Include(u => u.Department)
+                .Where(u => u.Department.Id == departmentDb.Id)
+                .ToList()
+                .Select(_mapper.Map<UserDb, User>);
         } 
         #endregion
 

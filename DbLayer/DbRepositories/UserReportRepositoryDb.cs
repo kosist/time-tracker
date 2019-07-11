@@ -29,13 +29,20 @@ namespace DbLayer.DbRepositories
         #region Interface implementation
         public UserReport GetUserReportById(int reportId)
         {
-            var userReportDb = _entities.Find(reportId);
+            var userReportDb = _entities
+                .Include(rec => rec.User)
+                .Include(rec => rec.ApprovedByUser)
+                .SingleOrDefault(rec => rec.Id == reportId);
             return _mapper.Map<UserReportDb, UserReport>(userReportDb);
         }
 
         public IEnumerable<UserReport> GetUserReports()
         {
-            return _entities.ToList().Select(_mapper.Map<UserReportDb, UserReport>);
+            return _entities
+                .Include(rec => rec.User)
+                .Include(rec => rec.ApprovedByUser)
+                .ToList()
+                .Select(_mapper.Map<UserReportDb, UserReport>);
         }
 
         public void InsertUserReport(UserReport report)

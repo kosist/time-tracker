@@ -29,13 +29,20 @@ namespace DbLayer.DbRepositories
         #region Interface implementation
         public TimeRecord GeTimeRecordById(int recordId)
         {
-            var recordDb = _entities.Find(recordId);
+            var recordDb = _entities
+                .Include(rec => rec.User)
+                .Include(rec => rec.ActivityType)
+                .SingleOrDefault(rec => rec.Id == recordId);
             return _mapper.Map<TimeRecordDb, TimeRecord>(recordDb);
         }
 
         public IEnumerable<TimeRecord> GetTimeRecords()
         {
-            return _entities.ToList().Select(_mapper.Map<TimeRecordDb, TimeRecord>);
+            return _entities
+                .Include(rec => rec.User)
+                .Include(rec => rec.ActivityType)
+                .ToList()
+                .Select(_mapper.Map<TimeRecordDb, TimeRecord>);
         }
 
         public void InsertTimeRecord(TimeRecord record)
