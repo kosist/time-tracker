@@ -1,0 +1,25 @@
+﻿@model TimeTrackerWeb.ViewModels.TimeRecordViewModel
+@{
+    ViewBag.Title = "NewRecord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NewRecord</h2>
+
+@using (Html.BeginForm("SaveRecord", "TimeRecords"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Users)
+        @Html.DropDownListFor(m => m.User.Id, new SelectList(Model.Users, "Id", "FullName"), "Select User", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.ActivityTypes)
+        @Html.DropDownListFor(m => m.Activity.Id, new SelectList(Model.ActivityTypes, "Id", "Name"), "Select Activity", new { @class = "form-control" })
+    </div>
+
+
+    @Html.AntiForgeryToken()
+    <button class="btn btn-primary" type="submit">Save Time Record</button>
+}
+
