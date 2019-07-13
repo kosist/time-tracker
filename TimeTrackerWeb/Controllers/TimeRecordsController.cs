@@ -40,9 +40,26 @@ namespace TimeTrackerWeb.Controllers
             return View(view);
         }
 
-        public ActionResult SaveRecord()
+        public ActionResult SaveRecord(UserDto user, ActivityTypeDto activity)
         {
-            throw new NotImplementedException();
+            var userInDb = _context.Users.GetUserById(user.Id);
+            var activityInDb = _context.LookupTables.GetActivityTypes().SingleOrDefault(act => act.Id == activity.Id);
+
+            if (userInDb == null)
+                return HttpNotFound();
+            if (activityInDb == null)
+                return HttpNotFound();
+
+            var record = new TimeRecord
+            {
+                RecordTime = DateTime.Now,
+                User = userInDb,
+                ActivityType = activityInDb,
+            };
+            _context.TimeRecords.InsertTimeRecord(record);
+            _context.Complete();
+
+            return RedirectToAction("Index", "Users");
         }
     }
 }

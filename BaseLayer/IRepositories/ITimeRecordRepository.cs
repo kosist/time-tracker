@@ -17,5 +17,6 @@ namespace BaseLayer.IRepositories
         void UpdateTimeRecord(TimeRecord record);
         IEnumerable<TimeRecord> GetUserDailyRecords(User user, DateTime dateTime);
         void RemoveLastUserRecord(User user);
+        TimeRecord GetLastUserRecord(int userId);
     }
 }

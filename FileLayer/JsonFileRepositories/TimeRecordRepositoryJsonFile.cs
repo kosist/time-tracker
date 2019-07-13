@@ -66,7 +66,14 @@ namespace FileLayer.JsonFileRepositories
             var userLastRecord = GetTimeRecords().Last(rec => rec.User.Name == user.Name
                                                       && rec.User.Surname == user.Surname);
             DeleteTimeRecord(userLastRecord);
-        } 
+        }
+
+        public TimeRecord GetLastUserRecord(int userId)
+        {
+            var userLastRecord = GetTimeRecords().Last(rec => rec.User.Id == userId);
+            return userLastRecord;
+
+        }
         #endregion
 
     }

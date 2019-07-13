@@ -278,6 +278,7 @@
     <Content Include="Views\Users\UserForm.cshtml" />
     <Content Include="Views\TimeRecords\Index.cshtml" />
     <Content Include="Views\TimeRecords\NewRecord.cshtml" />
+    <Content Include="Views\TimeRecords\ActivityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

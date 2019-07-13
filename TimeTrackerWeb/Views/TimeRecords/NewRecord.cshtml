@@ -13,13 +13,9 @@
         @Html.DropDownListFor(m => m.User.Id, new SelectList(Model.Users, "Id", "FullName"), "Select User", new { @class = "form-control" })
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.ActivityTypes)
-        @Html.DropDownListFor(m => m.Activity.Id, new SelectList(Model.ActivityTypes, "Id", "Name"), "Select Activity", new { @class = "form-control" })
-    </div>
+    @Html.Partial("ActivityList")
 
 
     @Html.AntiForgeryToken()
     <button class="btn btn-primary" type="submit">Save Time Record</button>
 }
-

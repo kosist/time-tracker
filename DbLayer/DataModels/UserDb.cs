@@ -15,11 +15,11 @@ namespace DbLayer.DataModels
         [Required]
         public string Surname { get; set; }
 
-        public DepartmentDb Department { get; set; }
+        public virtual DepartmentDb Department { get; set; }
 
         public int DepartmentId { get; set; }
 
-        public PositionDb Position { get; set; }
+        public virtual PositionDb Position { get; set; }
 
         public int PositionId { get; set; }
 

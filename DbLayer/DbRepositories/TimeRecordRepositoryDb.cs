@@ -101,7 +101,16 @@ namespace DbLayer.DbRepositories
                 .Include(r => r.User)
                 .Last(r => r.UserId == userDb.Id);
             _entities.Remove(recordDb);
-        } 
+        }
+
+        public TimeRecord GetLastUserRecord(int userId)
+        {
+            var recordDb = _entities
+                .Include(r => r.User)
+                .Last(r => r.UserId == userId);
+
+            return _mapper.Map<TimeRecordDb, TimeRecord>(recordDb);
+        }
         #endregion
     }
 }
