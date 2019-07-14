@@ -13,9 +13,20 @@
         @Html.DropDownListFor(m => m.User.Id, new SelectList(Model.Users, "Id", "FullName"), "Select User", new { @class = "form-control" })
     </div>
 
-    @Html.Partial("ActivityList")
-
+    <div id="partialView">@Html.Partial("ActivityList")</div>
 
     @Html.AntiForgeryToken()
     <button class="btn btn-primary" type="submit">Save Time Record</button>
+}
+@section scripts
+{
+    <script type="text/javascript">
+    $(function () {
+        $('#User_Id').change(function () {
+            $.get('/TimeRecords/AssignActivity/' + $(this).find(':selected').val(), function (data) {
+                $('#partialView').html(data);
+            })
+        });
+    });
+    </script>
 }

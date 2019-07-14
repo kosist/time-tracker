@@ -61,5 +61,34 @@ namespace TimeTrackerWeb.Controllers
 
             return RedirectToAction("Index", "Users");
         }
+
+        public ActionResult AssignActivity(int id)
+        {
+            var lastUserActivityId = _context.TimeRecords.GetLastUserRecord(id).ActivityType.Id;
+            IEnumerable<ActivityType> activities;
+
+            if (lastUserActivityId == 1) // break
+            {
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Id != 1);
+            }
+            else if (lastUserActivityId == 2) // start work
+            {
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Id != 2);
+            }
+            else if (lastUserActivityId == 3) // stop work
+            {
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Id != 1 && act.Id != 3);
+            }
+            else
+                activities = _context.LookupTables.GetActivityTypes();
+
+            var viewData = new TimeRecordViewModel
+            {
+                ActivityTypes = _mapper.Map<IEnumerable<ActivityType>, IEnumerable<ActivityTypeDto>>(activities),
+            };
+
+
+            return PartialView("ActivityList", viewData);
+        }
     }
 }

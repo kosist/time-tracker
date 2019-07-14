@@ -1,5 +1,5 @@
 ﻿@model TimeTrackerWeb.ViewModels.TimeRecordViewModel
 <div class="form-group">
     @Html.LabelFor(m => m.ActivityTypes)
-    @Html.DropDownListFor(m => m.Activity.Id, new SelectList(Model.ActivityTypes, "Id", "Name"), "Select Activity", new { @class = "form-control"} )
+    @Html.DropDownListFor(m => m.Activity.Id, new SelectList(Model.ActivityTypes, "Id", "Name"), new { @class = "form-control"} )
 </div>

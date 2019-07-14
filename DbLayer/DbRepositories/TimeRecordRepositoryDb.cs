@@ -106,8 +106,9 @@ namespace DbLayer.DbRepositories
         public TimeRecord GetLastUserRecord(int userId)
         {
             var recordDb = _entities
-                .Include(r => r.User)
-                .Last(r => r.UserId == userId);
+                .Where(r => r.UserId == userId)
+                .OrderByDescending(r => r.Id)
+                .FirstOrDefault();
 
             return _mapper.Map<TimeRecordDb, TimeRecord>(recordDb);
         }
