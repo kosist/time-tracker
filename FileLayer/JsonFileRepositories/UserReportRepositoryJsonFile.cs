@@ -77,7 +77,13 @@ namespace FileLayer.JsonFileRepositories
                                              && r.User.Surname == user.Surname
                                              && r.Date.Year == year.Year).ToList();
             return report;
-        } 
+        }
+
+        public IEnumerable<UserReport> GetReportsByTimeRange(User user, DateTime startDate, DateTime endDate)
+        {
+            // now not important to implement it
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }

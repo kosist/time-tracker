@@ -96,8 +96,7 @@ namespace DbLayer.DbRepositories
         public IEnumerable<UserReport> GetWeeklyReports(User user, DateTime weekStartDate)
         {
             var userDb = _mapper.Map<User, UserDb>(user);
-            var report = GetUserReports().Where(r => r.User.Name == user.Name
-                                                     && r.User.Surname == user.Surname
+            var report = GetUserReports().Where(r => r.User.Id == user.Id
                                                      && r.Date.Year == weekStartDate.Year
                                                      && r.Date.DayOfYear >= weekStartDate.DayOfYear
                                                      && r.Date.DayOfYear <= weekStartDate.DayOfYear + 7).ToList();
@@ -107,11 +106,19 @@ namespace DbLayer.DbRepositories
         public IEnumerable<UserReport> GetYearlyReports(User user, DateTime year)
         {
             var userDb = _mapper.Map<User, UserDb>(user);
-            var report = GetUserReports().Where(r => r.User.Name == user.Name
-                                                     && r.User.Surname == user.Surname
+            var report = GetUserReports().Where(r => r.User.Id == user.Id
                                                      && r.Date.Year == year.Year).ToList();
             return report;
-        } 
+        }
+
+        public IEnumerable<UserReport> GetReportsByTimeRange(User user, DateTime startDate, DateTime endDate)
+        {
+            var userDb = _mapper.Map<User, UserDb>(user);
+            var report = GetUserReports().Where(r => r.User.Id == user.Id
+                                                     && r.Date.Date >= startDate
+                                                     && r.Date.Date <= endDate).ToList();
+            return report;
+        }
         #endregion
     }
 }
