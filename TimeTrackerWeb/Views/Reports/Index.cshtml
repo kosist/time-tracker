@@ -1,0 +1,18 @@
+﻿@model TimeTrackerWeb.ViewModels.UsersListViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Reports</h2>
+
+@using (Html.BeginForm("GetReports", "Reports"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Users)
+        @Html.DropDownListFor(m => m.User.Id, new SelectList(Model.Users, "Id", "FullName"), "Select User", new { @class = "form-control" })
+    </div>
+
+    @Html.AntiForgeryToken()
+    <button class="btn btn-primary" type="submit">Get All Records</button>
+}
