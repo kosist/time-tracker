@@ -85,6 +85,13 @@ namespace FileLayer.JsonFileRepositories
             // now not important to implement it
             throw new NotImplementedException();
         }
+
+        public UserReport GetDailyReport(User user)
+        {
+            // now not important to implement it
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

@@ -18,5 +18,6 @@ namespace BaseLayer.IRepositories
         IEnumerable<UserReport> GetWeeklyReports(User user, DateTime weekStartDate);
         IEnumerable<UserReport> GetYearlyReports(User user, DateTime year);
         IEnumerable<UserReport> GetReportsByTimeRange(User user, DateTime startDate, DateTime endDate);
+        UserReport GetDailyReport(User user);
     }
 }

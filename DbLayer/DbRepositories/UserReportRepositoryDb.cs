@@ -119,6 +119,15 @@ namespace DbLayer.DbRepositories
                                                      && r.Date.Date <= endDate).ToList();
             return report;
         }
+
+        public UserReport GetDailyReport(User user)
+        {
+            var userDb = _mapper.Map<User, UserDb>(user);
+            var report = GetUserReports().Single(r => r.User.Id == user.Id
+                                                      && r.Date.Date == DateTime.Today);
+            return report;
+        }
+
         #endregion
     }
 }
