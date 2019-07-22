@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
 using BaseLayer.DataModels;
+using Common.Tables;
 using DbLayer.DbRepositories;
 using TimeTrackerWeb.Dtos;
 using TimeTrackerWeb.ViewModels;
@@ -64,20 +65,23 @@ namespace TimeTrackerWeb.Controllers
 
         public ActionResult AssignActivity(int id)
         {
-            var lastUserActivityId = _context.TimeRecords.GetLastUserRecord(id).ActivityType.Id;
+            var activityTypeName = _context.TimeRecords.GetLastUserRecord(id).ActivityType.Name;
             IEnumerable<ActivityType> activities;
+            string breakAlias = Activities.Break.ToString();
+            string startWorkAlias = Activities.StartWork.ToString();
+            string stopWorkAlias = Activities.StopWork.ToString();
 
-            if (lastUserActivityId == 1) // break
+            if (activityTypeName == breakAlias)
             {
-                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Id != 1);
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name != breakAlias);
             }
-            else if (lastUserActivityId == 2) // start work
+            else if (activityTypeName == startWorkAlias)
             {
-                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Id != 2);
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name != startWorkAlias);
             }
-            else if (lastUserActivityId == 3) // stop work
+            else if (activityTypeName == stopWorkAlias)
             {
-                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Id != 1 && act.Id != 3);
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name == startWorkAlias);
             }
             else
                 activities = _context.LookupTables.GetActivityTypes();
