@@ -9,5 +9,8 @@ namespace TimeTrackerWeb.ViewModels
     public class ReportsViewModel
     {
         public IEnumerable<UserReportDto> Reports { get; set; }
+        public UserDto User { get; set; }
+        public UserDto UserLead { get; set; }
+        public IEnumerable<UserDto> UsersLeads { get; set; }
     }
 }

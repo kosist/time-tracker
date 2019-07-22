@@ -17,5 +17,7 @@ namespace BaseLayer.DataModels
         public string TimeDifferenceReason { get; set; }
         public User ApprovedByUser { get; set; }
         public bool ApprovedFlag { get; set; }
+
+
     }
 }

@@ -1,0 +1,22 @@
+﻿@model TimeTrackerWeb.ViewModels.ReportsViewModel
+@{
+    ViewBag.Title = "UsersReports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UsersReports</h2>
+
+@using (Html.BeginForm("UpdateReports", "Reports"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.User.Name)
+        @Html.TextBoxFor(m => m.User.Name, new { @class = "form-control" })
+    </div>
+
+    
+
+    @Html.HiddenFor(m => m.User.Id)
+    @Html.HiddenFor(m => m.UserLead.Id)
+    @Html.AntiForgeryToken()
+    <button class="btn btn-primary" type="submit">Update Reports</button>
+}

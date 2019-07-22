@@ -40,6 +40,7 @@ namespace FileLayer.JsonFileRepositories
             FileHandler.UpdateUserReport(report);
         }
 
+
         public void DeleteUserReport(UserReport report)
         {
             FileHandler.RemoveObject(report);
