@@ -153,7 +153,7 @@ namespace TimeTrackerWeb.Controllers
                 activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name == StartWorkAlias);
             }
             else
-                activities = _context.LookupTables.GetActivityTypes();
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name == StartWorkAlias);
 
             var viewData = new TimeRecordViewModel
             {
