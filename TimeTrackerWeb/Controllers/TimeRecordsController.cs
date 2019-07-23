@@ -104,13 +104,14 @@ namespace TimeTrackerWeb.Controllers
 
             if ((lastActivityTypeName == StartWorkAlias))
             {
-                if ((currentActivityTypeName == StopWorkAlias) & (currentActivityTypeName == BreakAlias))
+                if ((currentActivityTypeName == StopWorkAlias) | (currentActivityTypeName == BreakAlias))
                 {
                     lastUserReport.WorkHours = DateTime.Now.Subtract(lastTimeRecord.RecordTime).TotalHours;
                 }
             }
 
             _context.TimeRecords.InsertTimeRecord(record);
+            _context.UserReports.UpdateUserReport(lastUserReport);
             _context.Complete();
 
             return RedirectToAction("Index", "Users");

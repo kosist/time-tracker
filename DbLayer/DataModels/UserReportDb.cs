@@ -16,7 +16,7 @@ namespace DbLayer.DataModels
         public double TimeDifference { get; set; }
         public string TimeDifferenceReason { get; set; }
         public virtual UserDb ApprovedByUser { get; set; }
-        public int ApprovedByUserId { get; set; } 
+        public int? ApprovedByUserId { get; set; } 
         public bool ApprovedFlag { get; set; }
     }
 }
