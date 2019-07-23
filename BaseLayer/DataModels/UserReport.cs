@@ -11,9 +11,9 @@ namespace BaseLayer.DataModels
         public int Id { get; set; }
         public User User { get; set; }
         public DateTime Date { get; set; }
-        public float WorkHours { get; set; }
-        public float BreakHours { get; set; }
-        public float TimeDifference { get; set; }
+        public double WorkHours { get; set; }
+        public double BreakHours { get; set; }
+        public double TimeDifference { get; set; }
         public string TimeDifferenceReason { get; set; }
         public User ApprovedByUser { get; set; }
         public bool ApprovedFlag { get; set; }

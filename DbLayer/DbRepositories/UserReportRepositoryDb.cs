@@ -123,7 +123,7 @@ namespace DbLayer.DbRepositories
         public UserReport GetDailyReport(User user)
         {
             var userDb = _mapper.Map<User, UserDb>(user);
-            var report = GetUserReports().Single(r => r.User.Id == user.Id
+            var report = GetUserReports().SingleOrDefault(r => r.User.Id == user.Id
                                                       && r.Date.Date == DateTime.Today);
             return report;
         }

@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201907221930526_RemoveTimeRecordsFromUserReportTable.Designer.cs">
       <DependentUpon>201907221930526_RemoveTimeRecordsFromUserReportTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907231934560_ChangedHoursValuesFromFloatToDouble.cs" />
+    <Compile Include="Migrations\201907231934560_ChangedHoursValuesFromFloatToDouble.Designer.cs">
+      <DependentUpon>201907231934560_ChangedHoursValuesFromFloatToDouble.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -338,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907221930526_RemoveTimeRecordsFromUserReportTable.resx">
       <DependentUpon>201907221930526_RemoveTimeRecordsFromUserReportTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907231934560_ChangedHoursValuesFromFloatToDouble.resx">
+      <DependentUpon>201907231934560_ChangedHoursValuesFromFloatToDouble.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

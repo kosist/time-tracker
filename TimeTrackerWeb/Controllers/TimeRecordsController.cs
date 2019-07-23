@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +17,9 @@ namespace TimeTrackerWeb.Controllers
     {
         private IUnitOfWork _context;
         private readonly IMapper _mapper;
+        protected readonly string BreakAlias = Activities.Break.ToString();
+        protected readonly string StartWorkAlias = Activities.StartWork.ToString();
+        protected readonly string StopWorkAlias = Activities.StopWork.ToString();
 
         public TimeRecordsController(IUnitOfWork context, IMapper mapper)
         {
@@ -57,6 +61,55 @@ namespace TimeTrackerWeb.Controllers
                 User = userInDb,
                 ActivityType = activityInDb,
             };
+            
+
+            /*
+            Check, if user has record in UserReport table;
+            get last record in TimeRecords table;
+            check type of last activity;
+            get current activity;
+            for transitions:
+                start work -> break;
+                start work -> stop work: update working time
+            for transitions:
+                break -> start work;
+                break -> stop work: update break time
+            for transitions:
+                nothing -> start work;
+                stop work -> start work: update nothing
+            For transitions to stop work, all the time update TimeDifference column                
+             */
+
+            var lastUserReport = _context.UserReports.GetDailyReport(userInDb);
+
+            if (lastUserReport == null)
+            {
+                lastUserReport = new UserReport
+                {
+                    User = userInDb,
+                    Date = DateTime.Today,
+                    WorkHours = 8,
+                    BreakHours = userInDb.BreakDurationInMinutes / 60,
+                };
+            }
+
+            var lastActivityTypeName = "";
+            var lastTimeRecord = _context.TimeRecords.GetLastUserRecord(userInDb.Id);
+            if (lastTimeRecord == null)
+            {
+                lastActivityTypeName = lastTimeRecord.ActivityType.Name;
+            }
+
+            var currentActivityTypeName = activityInDb.Name;
+
+            if ((lastActivityTypeName == StartWorkAlias))
+            {
+                if ((currentActivityTypeName == StopWorkAlias) & (currentActivityTypeName == BreakAlias))
+                {
+                    lastUserReport.WorkHours = DateTime.Now.Subtract(lastTimeRecord.RecordTime).TotalHours;
+                }
+            }
+
             _context.TimeRecords.InsertTimeRecord(record);
             _context.Complete();
 
@@ -67,21 +120,18 @@ namespace TimeTrackerWeb.Controllers
         {
             var activityTypeName = _context.TimeRecords.GetLastUserRecord(id).ActivityType.Name;
             IEnumerable<ActivityType> activities;
-            string breakAlias = Activities.Break.ToString();
-            string startWorkAlias = Activities.StartWork.ToString();
-            string stopWorkAlias = Activities.StopWork.ToString();
 
-            if (activityTypeName == breakAlias)
+            if (activityTypeName == BreakAlias)
             {
-                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name != breakAlias);
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name != BreakAlias);
             }
-            else if (activityTypeName == startWorkAlias)
+            else if (activityTypeName == StartWorkAlias)
             {
-                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name != startWorkAlias);
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name != StartWorkAlias);
             }
-            else if (activityTypeName == stopWorkAlias)
+            else if (activityTypeName == StopWorkAlias)
             {
-                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name == startWorkAlias);
+                activities = _context.LookupTables.GetActivityTypes().Where(act => act.Name == StartWorkAlias);
             }
             else
                 activities = _context.LookupTables.GetActivityTypes();
@@ -90,7 +140,6 @@ namespace TimeTrackerWeb.Controllers
             {
                 ActivityTypes = _mapper.Map<IEnumerable<ActivityType>, IEnumerable<ActivityTypeDto>>(activities),
             };
-
 
             return PartialView("ActivityList", viewData);
         }
