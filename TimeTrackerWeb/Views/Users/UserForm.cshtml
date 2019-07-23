@@ -39,8 +39,8 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.User.BreakDurationInMinutes)
-        @Html.TextBoxFor(m => m.User.BreakDurationInMinutes, new { @class = "form-control" })
+        @Html.LabelFor(m => m.User.BreakDurationHours)
+        @Html.TextBoxFor(m => m.User.BreakDurationHours, new { @class = "form-control" })
     </div>
 
     @Html.HiddenFor(m => m.User.Id)

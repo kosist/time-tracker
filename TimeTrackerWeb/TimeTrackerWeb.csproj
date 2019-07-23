@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201907231953439_UserReportTableApprovedByUserIdSetAsOptional.Designer.cs">
       <DependentUpon>201907231953439_UserReportTableApprovedByUserIdSetAsOptional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907232034364_RenamedIntoBreakDurationHoursAndChangedToFloatType.cs" />
+    <Compile Include="Migrations\201907232034364_RenamedIntoBreakDurationHoursAndChangedToFloatType.Designer.cs">
+      <DependentUpon>201907232034364_RenamedIntoBreakDurationHoursAndChangedToFloatType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -352,6 +356,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907231953439_UserReportTableApprovedByUserIdSetAsOptional.resx">
       <DependentUpon>201907231953439_UserReportTableApprovedByUserIdSetAsOptional.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907232034364_RenamedIntoBreakDurationHoursAndChangedToFloatType.resx">
+      <DependentUpon>201907232034364_RenamedIntoBreakDurationHoursAndChangedToFloatType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

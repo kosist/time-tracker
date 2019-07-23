@@ -61,8 +61,8 @@ namespace TimeTrackerWeb.Controllers
                 User = userInDb,
                 ActivityType = activityInDb,
             };
-            
 
+            #region Comments-explanation of the logic
             /*
             Check, if user has record in UserReport table;
             get last record in TimeRecords table;
@@ -79,8 +79,11 @@ namespace TimeTrackerWeb.Controllers
                 stop work -> start work: update nothing
             For transitions to stop work, all the time update TimeDifference column                
              */
+            #endregion
 
             var lastUserReport = _context.UserReports.GetDailyReport(userInDb);
+
+            #region Create lastUserReport object
 
             if (lastUserReport == null)
             {
@@ -88,26 +91,41 @@ namespace TimeTrackerWeb.Controllers
                 {
                     User = userInDb,
                     Date = DateTime.Today,
-                    WorkHours = 8,
-                    BreakHours = userInDb.BreakDurationInMinutes / 60,
+                    WorkHours = 0,
+                    BreakHours = 0,
                 };
             }
 
+            #endregion
+
             var lastActivityTypeName = "";
             var lastTimeRecord = _context.TimeRecords.GetLastUserRecord(userInDb.Id);
-            if (lastTimeRecord == null)
+            if (lastTimeRecord != null)
             {
                 lastActivityTypeName = lastTimeRecord.ActivityType.Name;
             }
 
             var currentActivityTypeName = activityInDb.Name;
 
-            if ((lastActivityTypeName == StartWorkAlias))
+            if (lastActivityTypeName == StartWorkAlias)
             {
                 if ((currentActivityTypeName == StopWorkAlias) | (currentActivityTypeName == BreakAlias))
                 {
-                    lastUserReport.WorkHours = DateTime.Now.Subtract(lastTimeRecord.RecordTime).TotalHours;
+                    lastUserReport.WorkHours += DateTime.Now.Subtract(lastTimeRecord.RecordTime).TotalHours;
                 }
+            }
+            else if(lastActivityTypeName == BreakAlias)
+            {
+                if ((currentActivityTypeName == StartWorkAlias) | (currentActivityTypeName == StopWorkAlias))
+                {
+                    lastUserReport.BreakHours += DateTime.Now.Subtract(lastTimeRecord.RecordTime).TotalHours;
+                }
+            }
+            else {;}
+
+            if (currentActivityTypeName == StopWorkAlias)
+            {
+                lastUserReport.TimeDifference = lastUserReport.WorkHours - userInDb.NumberOfDailyWorkHours;
             }
 
             _context.TimeRecords.InsertTimeRecord(record);

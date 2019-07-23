@@ -72,7 +72,7 @@ namespace TimeTrackerWeb.Controllers
                 userInDb.Position = _mapper.Map<PositionDto, Position>(user.Position);
                 userInDb.NumberOfDailyWorkHours = user.NumberOfDailyWorkHours;
                 userInDb.NumberOfWorkingDaysPerWeek = user.NumberOfWorkingDaysPerWeek;
-                userInDb.BreakDurationInMinutes = user.BreakDurationInMinutes;
+                userInDb.BreakDurationHours = user.BreakDurationHours;
                 _context.Users.UpdateUser(userInDb);
             }
             _context.Complete();

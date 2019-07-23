@@ -35,8 +35,8 @@ namespace TimeTrackerWeb.Dtos
 
         [Required]
         [DefaultValue(60)]
-        [DisplayName("Break duration, minutes")]
-        public int BreakDurationInMinutes { get; set; }
+        [DisplayName("Break duration, hours")]
+        public float BreakDurationHours { get; set; }
 
         public string FullName => Name + " " + Surname;
     }

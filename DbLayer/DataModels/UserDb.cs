@@ -33,7 +33,7 @@ namespace DbLayer.DataModels
 
         [Required]
         [DefaultValue(60)]
-        public int BreakDurationInMinutes { get; set; }
+        public float BreakDurationHours { get; set; }
 
     }
 }

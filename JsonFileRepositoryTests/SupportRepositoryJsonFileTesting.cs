@@ -20,7 +20,7 @@ namespace JsonFileRepositoryTests
                 Position = new Position { Name = position },
                 NumberOfWorkingDaysPerWeek = 5,
                 NumberOfDailyWorkHours = 8,
-                BreakDurationInMinutes = 60
+                BreakDurationHours = 60
             };
             return user;
         }
@@ -36,7 +36,7 @@ namespace JsonFileRepositoryTests
                 Position = new Position { Name = position },
                 NumberOfWorkingDaysPerWeek = 5,
                 NumberOfDailyWorkHours = 4,
-                BreakDurationInMinutes = 30
+                BreakDurationHours = 30
             };
             return user;
         }
