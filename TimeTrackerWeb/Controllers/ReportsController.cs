@@ -26,7 +26,7 @@ namespace TimeTrackerWeb.Controllers
         {
             var users = _context.Users.GetUsers();
 
-            var view = new UsersListViewModel
+            var view = new UserReportSelectorViewModel
             {
                 Users = _mapper.Map<IEnumerable<User>, IEnumerable<UserDto>>(users),
                 User = new UserDto()
@@ -35,11 +35,12 @@ namespace TimeTrackerWeb.Controllers
             return View(view);
         }
 
-        public ActionResult GetReports(int userId, DateTime startDate, DateTime endDate)
+        //public ActionResult GetReports(int userId, DateTime startDate, DateTime endDate)
+        public ActionResult GetReports(UserReportSelectorViewModel userReportSelector)
         {
-            var user = _context.Users.GetUserById(userId);
+            var user = _context.Users.GetUserById(userReportSelector.User.Id);
             var userDto = _mapper.Map<User, UserDto>(user);
-            var records = _context.UserReports.GetReportsByTimeRange(user, startDate, endDate).Select(_mapper.Map<UserReport, UserReportDto>);
+            var records = _context.UserReports.GetReportsByTimeRange(user, userReportSelector.StartDate, userReportSelector.EndDate).Select(_mapper.Map<UserReport, UserReportDto>);
 
             var reportsViewModel = new ReportsViewModel
             {
