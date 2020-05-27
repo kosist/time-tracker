@@ -91,7 +91,7 @@ namespace DbLayer.DbRepositories
                 .Include(r => r.User)
                 .Where(r => r.User.Id == userDb.Id && r.RecordTime.Date == dateTime.Date)
                 .ToList()
-                .Select(Mapper.Map<TimeRecordDb, TimeRecord>);
+                .Select(_mapper.Map<TimeRecordDb, TimeRecord>);
         }
 
         public void RemoveLastUserRecord(User user)

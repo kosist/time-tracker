@@ -10,9 +10,23 @@
 {
     <div class="form-group">
         @Html.LabelFor(m => m.Users)
-        @Html.DropDownListFor(m => m.User.Id, new SelectList(Model.Users, "Id", "FullName"), "Select User", new { @class = "form-control" })
+        @Html.DropDownListFor(m => m.User.Id, new SelectList(Model.Users, "Id", "FullName"), "Select User", new { @class = "form-control" } )
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate)
+        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate)
+        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+
     @Html.AntiForgeryToken()
-    <button class="btn btn-primary" type="submit">Get All Records</button>
+    @*<button class="btn btn-primary" type="submit" formaction="@Url.Action("GetReports", new { userId = Model.User.Id, startDate = Model.StartDate, endDate = Model.EndDate })">Get All Records</button>*@
+
+    <td>@Html.ActionLink("Get records", "GetReports", "Reports", new { userId = Model.User.Id, startDate = Model.StartDate, endDate = Model.EndDate }, new {@class="btn btn-primary"})</td>
+
 }

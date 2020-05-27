@@ -12,5 +12,8 @@ namespace TimeTrackerWeb.ViewModels
         public UserDto User { get; set; }
         public UserDto UserLead { get; set; }
         public IEnumerable<UserDto> UsersLeads { get; set; }
+
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

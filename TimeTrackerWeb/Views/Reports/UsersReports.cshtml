@@ -8,10 +8,29 @@
 
 @using (Html.BeginForm("UpdateReports", "Reports"))
 {
-    <div class="form-group">
-        @Html.LabelFor(m => m.User.Name)
-        @Html.TextBoxFor(m => m.User.Name, new { @class = "form-control" })
-    </div>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>WorkHours</th>
+                <th>BreakHours</th>
+                <th>TimeDifference</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var record in Model.Reports)
+        {
+            <tr>
+                <td>@record.Id</td>
+                <td>@record.Date</td>
+                <td>@record.WorkHours</td>
+                <td>@record.BreakHours</td>
+                <td>@record.TimeDifference</td>
+            </tr>
+        }
+        </tbody>
+    </table>
 
     
 
